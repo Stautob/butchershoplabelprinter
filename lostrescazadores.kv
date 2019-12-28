@@ -1,15 +1,119 @@
-<MainWidget>:
+#:kivy 1.0.0
+
+<AnimalScreen>:
     BoxLayout:
-        Button:
-        Label:
-            id: title
-            text: "LOS TRES CAZADORES"
-        Button:
-            id: btn_settings
+        orientation: 'vertical'
+        BoxLayout:
+            padding: 10
+            spacing: 10
+            size_hint_y: 1
+            orientation: 'horizontal'
+            Button:
+                size_hint_x: 1
+                keep_ratio: True
+                id: btn_settings
+                on_press: app.switchToMain()
+                CenteredImage:
+                    source: 'resources/images/arrow_back.png'
+            Widget:
+                size_hint_x: 3
             Image:
-                source: 'icons8-settings-128.png'
-    GridLayout:
-        Button:
-        Button:
-        Button:
-        Button:
+                size_hint_x: 2
+                halign: 'right'
+                source: 'resources/images/ic_roe_m.png'
+            CenterLeftLabel:
+                size_hint_x: 2
+                text: root.self.title
+                font_size: "40sp"
+            Widget:
+                size_hint_x: 4
+
+        GridLayout:
+            rows: 2
+            cols: 3
+            padding: 10,0,10,10
+            size_hint_y: 6
+            BigButton:
+                text: "Filet"
+            BigButton:
+                text: "Hack"
+            BigButton:
+                text: "Pfeffer"
+            BigButton:
+                text: "Schnitzel"
+            BigButton:
+                text: "Rücken"
+            BigButton:
+                text: "Luder"
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            padding: 10
+            size_hint_y: 1
+            orientation: 'horizontal'
+            CenterLeftLabel:
+                size_hint_x: 10
+                text: "Wild auswählen:"
+            Button:
+                size_hint_x: 1
+                keep_ratio: True
+                id: btn_settings
+                on_press: app.switchToSettings()
+                CenteredImage:
+                    source: 'resources/images/settings.png'
+        ScrollView:
+            size_hint_y: 6
+#            StackLayout:
+            GridLayout:
+                rows: 2
+                cols: 2
+                padding: 10,0,10,10
+                BigButton:
+                    text: "Reh"
+#                    background_color: 0.01198,0.792,0.988,5
+                    on_press: app.sm.current = "roe"
+                    AnimalImage:
+                        source: 'resources/images/ic_roe_m.png'
+                BigButton:
+                    text: "Sau"
+#                    background_color: 0.01198,0.792,0.988,5
+                    AnimalImage:
+                        source: 'resources/images/ic_boar_m.png'
+                BigButton:
+                    text: "Fuch"
+#                    background_color: 3,202,252,255
+                    AnimalImage:
+                        source: 'resources/images/ic_fox.png'
+                BigButton:
+                    text: "Dachs"
+#                    background_color: 3,202,252,255
+                    AnimalImage:
+                        source: 'resources/images/ic_badger.png'
+
+<CenterLeftLabel@Label>:
+    halign: 'left'
+    text_size:self.size
+    valign: 'center'
+    font_size: '30sp'
+
+<BigButton@Button>:
+    font_size: '30sp'
+    markup: True
+
+<CenteredImage@Image>:
+    height: self.parent.height * 0.8
+    width: self.parent.width * 0.8
+    keep_ratio: True
+    y: self.parent.y + self.parent.height/2 - self.height/2
+    x: self.parent.x + self.parent.width/2 - self.width/2
+    allow_stretch: True
+
+<AnimalImage@Image>:
+    height: self.parent.height/2
+    width: self.parent.width/2
+    keep_ratio: True
+    y: self.parent.y + self.parent.height/2 - self.height/2
+    x: self.parent.x
+    allow_stretch: True
