@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1109"
+   height="696"
+   viewBox="0 0 293.42292 184.15"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="label.svg"
+   inkscape:export-filename="/home/tstauber/git/stautob/butchershoplabelprinter/resources/label/empty_label.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   enable-background="new">
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter7687">
+      <feBlend
+         inkscape:collect="always"
+         mode="darken"
+         in2="BackgroundImage"
+         id="feBlend7689" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.6704545"
+     inkscape:cx="702.36766"
+     inkscape:cy="440.7541"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1600"
+     inkscape:window-height="851"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-112.85)">
+    <text
+       inkscape:label="price_per_kg"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="277.26706"
+       y="272.70801"
+       id="price_per_kg"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6-6-0"
+         x="277.26706"
+         y="272.70801"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;text-anchor:end;stroke-width:0.26256499px">(CHF 3.00/kg)</tspan></text>
+    <text
+       inkscape:label="price"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="277.65231"
+       y="257.66443"
+       id="price"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6-6-7"
+         x="277.65231"
+         y="257.66443"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;text-anchor:end;stroke-width:0.26256499px">Preis: CHF 00.30</tspan></text>
+    <text
+       inkscape:label="game_no"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="13.934537"
+       y="289.58887"
+       id="game_no"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6-6-2-2"
+         x="13.934537"
+         y="289.58887"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">Wild Nr.: 039159</tspan></text>
+    <text
+       inkscape:label="date"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="13.978143"
+       y="272.58948"
+       id="date"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6-6-2"
+         x="13.978143"
+         y="272.58948"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">Verpackt: 30.12.2019</tspan></text>
+    <text
+       inkscape:label="weight"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="13.842142"
+       y="256.7211"
+       id="weight"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6-6-8"
+         x="13.842142"
+         y="256.7211"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">Gewicht: 300g </tspan></text>
+    <text
+       inkscape:label="cut"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="114.03676"
+       y="216.70694"
+       id="cut"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6-6"
+         x="114.03676"
+         y="216.70694"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.93333244px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">cut</tspan></text>
+    <text
+       inkscape:label="animal"
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       x="114.25725"
+       y="192.92966"
+       id="animal"
+       transform="matrix(1.015433,0,0,1,-0.34940148,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4518-6"
+         x="114.25725"
+         y="192.92966"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.75555611px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">animal</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 13.98063,155.63159 H 279.44229"
+       id="path4589"
+       inkscape:connector-curvature="0"
+       inkscape:label="separator" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.22916603px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="146.61224"
+       y="141.68411"
+       id="title"
+       inkscape:label="title"><tspan
+         sodipodi:role="line"
+         id="tspan4518"
+         x="146.61224"
+         y="141.68411"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:'FranciscoLucas Briosa';-inkscape-font-specification:'FranciscoLucas Briosa';text-align:center;text-anchor:middle;stroke-width:0.26458332px;letter-spacing:0.45772914px">Los Tres Cazadores</tspan></text>
+    <text
+       inkscape:label="title"
+       id="text7836"
+       y="150.56892"
+       x="206.96342"
+       style="font-style:normal;font-weight:normal;font-size:13.22916603px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'FranciscoLucas Briosa';-inkscape-font-specification:'FranciscoLucas Briosa';text-align:center;text-anchor:middle;stroke-width:0.26458332px"
+         y="150.56892"
+         x="206.96342"
+         id="tspan7834"
+         sodipodi:role="line">Schweizer Wildbret</tspan></text>
+  </g>
+</svg>

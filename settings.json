@@ -1,0 +1,49 @@
+[
+  {
+    "type": "options",
+    "title": "Waage",
+    "desc": "Aktives Wiegemodul",
+    "options": ["Keins", "Manuell", "USB"],
+    "section": "usage",
+    "key": "active_scale_module"
+  },
+  {
+    "type": "multi_dynamic_options",
+    "title": "Sets",
+    "desc": "Aktive Wildtier-Sets",
+    "function_string": "LosTresCazadoresApp.available_game_sets",
+    "section": "usage",
+    "key": "active_game_sets"
+  },
+  {
+    "type": "options",
+    "title": "Printer Model",
+    "desc": "Used printer model",
+    "options": ["QL-800"],
+    "section": "printer",
+    "key": "printer_model"
+  },
+  {
+    "type": "dynamic_options",
+    "title": "Printer ID",
+    "desc": "Used printer",
+    "function_string": "LosTresCazadoresApp.available_printers",
+    "section": "printer",
+    "key": "printer_id"
+  },
+  {
+    "type": "options",
+    "title": "Labels",
+    "desc": "Used label size",
+    "options": ["62x100", "62"],
+    "section": "printer",
+    "key": "printer_label_size"
+  },
+  {
+    "type": "bool",
+    "title": "Cutting",
+    "desc": "Cutting between labels",
+    "section": "printer",
+    "key": "printer_cut"
+  }
+]

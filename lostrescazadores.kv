@@ -1,9 +1,11 @@
 #:kivy 1.0.0
-
+#:import Image kivy.uix.image
 <AnimalScreen>:
+    game_no: tif_game_no.text
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
+            id: lay_bar
             padding: 10
             spacing: 10
             size_hint_y: 1
@@ -12,39 +14,41 @@
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_settings
-                on_press: app.switchToMain()
+                on_press: app.switch_to_main()
                 CenteredImage:
                     source: 'resources/images/arrow_back.png'
-            Widget:
-                size_hint_x: 3
             Image:
-                size_hint_x: 2
-                halign: 'right'
-                source: 'resources/images/ic_roe_m.png'
+                id: img_title
+                size_hint_x: 1
+                valign: "right"
             CenterLeftLabel:
-                size_hint_x: 2
-                text: root.self.title
+                id: lbl_title
+                size_hint_x: 5
                 font_size: "40sp"
-            Widget:
-                size_hint_x: 4
-
-        GridLayout:
-            rows: 2
-            cols: 3
-            padding: 10,0,10,10
+            TextInput:
+                id: tif_game_no
+                size_hint_x: 2
+                hint_text: "Wild Nr."
+                valign: "middle"
+                multiline: False
+                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+                input_type: "number"
+                input_filter: "int"
+                font_size: "30sp"
+        ScrollView:
             size_hint_y: 6
-            BigButton:
-                text: "Filet"
-            BigButton:
-                text: "Hack"
-            BigButton:
-                text: "Pfeffer"
-            BigButton:
-                text: "Schnitzel"
-            BigButton:
-                text: "Rücken"
-            BigButton:
-                text: "Luder"
+            padding: 10,10
+            do_scroll_x: False
+            do_scroll_y: True
+            GridLayout:
+                id: grid_cuts
+                padding: 10,0,10,10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '160dp'
+                cols: 3
+                spacing: 10 if len(self.children) > 1 else 0
+
 
 <MainScreen>:
     BoxLayout:
@@ -55,48 +59,54 @@
             orientation: 'horizontal'
             CenterLeftLabel:
                 size_hint_x: 10
+                font_size: "40sp"
                 text: "Wild auswählen:"
             Button:
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_settings
-                on_press: app.switchToSettings()
+                on_press: app.open_settings()
                 CenteredImage:
                     source: 'resources/images/settings.png'
         ScrollView:
             size_hint_y: 6
-#            StackLayout:
+            do_scroll: False, True
             GridLayout:
-                rows: 2
-                cols: 2
+                id: grid_animals
                 padding: 10,0,10,10
-                BigButton:
-                    text: "Reh"
-#                    background_color: 0.01198,0.792,0.988,5
-                    on_press: app.sm.current = "roe"
-                    AnimalImage:
-                        source: 'resources/images/ic_roe_m.png'
-                BigButton:
-                    text: "Sau"
-#                    background_color: 0.01198,0.792,0.988,5
-                    AnimalImage:
-                        source: 'resources/images/ic_boar_m.png'
-                BigButton:
-                    text: "Fuch"
-#                    background_color: 3,202,252,255
-                    AnimalImage:
-                        source: 'resources/images/ic_fox.png'
-                BigButton:
-                    text: "Dachs"
-#                    background_color: 3,202,252,255
-                    AnimalImage:
-                        source: 'resources/images/ic_badger.png'
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '160dp'
+                cols: 2
+                spacing: 10
+
 
 <CenterLeftLabel@Label>:
     halign: 'left'
     text_size:self.size
     valign: 'center'
     font_size: '30sp'
+
+<AnimalButton>:
+    orientation: "horizontal"
+    text: ""
+    source: ""
+    size_hint: 1,1
+    canvas.before:
+        BorderImage:
+            border: 16, 16, 16, 16
+            source: root.background_normal
+            pos: self.pos
+            size: self.size
+    AnimalImage:
+        size_hint_x: 2
+        id: img_animal
+        source: root.source
+    CenterLeftLabel:
+        id: lbl_title
+        size_hint_x: 2
+        padding: 10,0
+        text: root.text
 
 <BigButton@Button>:
     font_size: '30sp'
@@ -117,3 +127,25 @@
     y: self.parent.y + self.parent.height/2 - self.height/2
     x: self.parent.x
     allow_stretch: True
+
+<ScalePopup>:
+    auto_dismiss: False
+    size_hint: 0.5,0.3
+    title: "Gewicht Eingeben"
+    title_align: "center"
+    BoxLayout:
+        orientation: "vertical"
+        TextInput:
+            id: tif_weight
+            valign: "middle"
+            halign: "center"
+            multiline: False
+            padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            input_type: "number"
+            input_filter: "int"
+            font_size: "30sp"
+        Button:
+            keep_ratio: True
+            id: btn_ok
+            on_release: root.finish()
+            text: "OK"

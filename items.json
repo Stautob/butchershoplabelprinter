@@ -1,0 +1,170 @@
+{
+  "animals": [
+    {
+      "title": "Reh",
+      "gameNo": true,
+      "sets": [
+        "Schalenwild 1"
+      ],
+      "icon_source": "resources/images/ic_roe_m.png",
+      "cuts": [
+        {
+          "title": "Hack",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Pfeffer",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Schnitzel",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Rücken",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Filet",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Luder",
+          "pricePerKg": 0.00
+        },
+        {
+          "title": "Test",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Test22",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Test",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Test22",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Test",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Test22",
+          "pricePerKg": 10.00
+        }
+      ]
+    },
+    {
+      "title": "Wildschwein",
+      "gameNo": true,
+      "sets": [
+        "Schwarzwild"
+      ],
+      "icon_source": "resources/images/ic_boar_m.png",
+      "cuts": [
+        {
+          "title": "Hack",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Pfeffer",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Schnitzel",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Rücken",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Filet",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Luder",
+          "pricePerKg": 0.00
+        }
+      ]
+    },
+    {
+      "title": "Fuchs",
+      "gameNo": false,
+      "sets": [
+        "Dominik's Kategorie"
+      ],
+      "icon_source": "resources/images/ic_fox.png",
+      "cuts": [
+        {
+          "title": "Salami :)",
+          "pricePerKg": 0.05
+        }
+      ]
+    },
+    {
+      "title": "Dachs",
+      "gameNo": false,
+      "sets": [
+        "Dominik's Kategorie"
+      ],
+      "icon_source": "resources/images/ic_badger.png",
+      "cuts": [
+        {
+          "title": "Salami :)",
+          "pricePerKg": 0.05
+        }
+      ]
+    },
+    {
+      "title": "Ente",
+      "gameNo": false,
+      "sets": [
+        "Federwild"
+      ],
+      "icon_source": "resources/images/ic_duck_m.png",
+      "cuts": [
+        {
+          "title": "Brust",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Magen",
+          "pricePerKg": 10.00
+        }
+      ]
+    },
+    {
+      "title": "Hirsch",
+      "gameNo": true,
+      "sets": [
+        "Schalenwild 2"
+      ],
+      "icon_source": "resources/images/ic_deer_m.png",
+      "cuts": [
+        {
+          "title": "TODO",
+          "pricePerKg": 10.00
+        }
+      ]
+    },
+    {
+      "title": "Gämse",
+      "gameNo": true,
+      "sets": [
+        "Schalenwild 2"
+      ],
+      "icon_source": "resources/images/ic_chamois_m.png",
+      "cuts": [
+        {
+          "title": "TODO",
+          "pricePerKg": 10.00
+        }
+      ]
+    }
+  ]
+}
