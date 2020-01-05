@@ -3,7 +3,11 @@
     "type": "options",
     "title": "Waage",
     "desc": "Aktives Wiegemodul",
-    "options": ["Keins", "Manuell", "USB"],
+    "options": [
+      "Keins",
+      "Manuell",
+      "USB"
+    ],
     "section": "usage",
     "key": "active_scale_module"
   },
@@ -16,10 +20,16 @@
     "key": "active_game_sets"
   },
   {
+    "type": "title",
+    "title": "Drucker"
+  },
+  {
     "type": "options",
     "title": "Printer Model",
     "desc": "Used printer model",
-    "options": ["QL-800"],
+    "options": [
+      "QL-800"
+    ],
     "section": "printer",
     "key": "printer_model"
   },
@@ -35,7 +45,10 @@
     "type": "options",
     "title": "Labels",
     "desc": "Used label size",
-    "options": ["62x100", "62"],
+    "options": [
+      "62x100",
+      "62"
+    ],
     "section": "printer",
     "key": "printer_label_size"
   },
