@@ -16,7 +16,7 @@
                 id: btn_settings
                 on_press: app.switch_to_main()
                 CenteredImage:
-                    source: 'resources/images/arrow_back.png'
+                    source: 'resources/images/back_arrow.png'
             Image:
                 id: img_title
                 size_hint_x: 1
@@ -57,10 +57,17 @@
             padding: 10
             size_hint_y: 1
             orientation: 'horizontal'
-            CenterLeftLabel:
-                size_hint_x: 10
+            Button:
+                size_hint_x: 1
+                keep_ratio: True
+                id: btn_shutdown
+                on_press: app.shutdown()
+                CenteredImage:
+                    source: 'resources/images/power.png'
+            Label:
+                size_hint_x: 8
                 font_size: "40sp"
-                text: "Wild auswählen:"
+                text: "Los Tres Cazadores"
             Button:
                 size_hint_x: 1
                 keep_ratio: True

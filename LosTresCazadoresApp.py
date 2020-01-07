@@ -115,31 +115,32 @@ class AnimalScreen(Screen):
         printer = config.get("printer", "printer_id")
         qlr = BrotherQLRaster(config.get("printer", "printer_model"))
         qlr.exception_on_warning = True
+        # TODO test if this threshold is sensible
         instructions = convert(qlr=qlr,
                                cut=config.getboolean("printer", "printer_cut"),
                                label=config.get("printer", "printer_label_size"),
                                images=[image],
-                               threshold=30)
+                               threshold=99)
 
         # TODO add method to check if an error occured
-        send(instructions=instructions, printer_identifier=printer, backend_identifier="pyusb", blocking=False)
-        pass
-        # qlr = BrotherQLRaster(CONFIG['PRINTER']['MODEL'])
-        # create_label()
+        try:
+            send(instructions=instructions, printer_identifier=printer, backend_identifier="pyusb", blocking=False)
+        except ValueError as e:
+            print(e)
 
     def fill_in_label(self, cut, weight):
         img = Image.open("resources/label/empty_label.png")
         draw = ImageDraw.Draw(img)
         TextPosition(self.animal.title, 70, 2.42, 2.7, False).draw(draw)
         TextPosition(cut.title, 56, 2.38, 1.93, False).draw(draw)
-        TextPosition(f"Verpackt: {date.today().strftime('%d.%m.%Y')}", 36, 20, 1.107, False).draw(draw)
+        TextPosition("Verpackt: {}".format(date.today().strftime('%d.%m.%Y')), 36, 20, 1.107, False).draw(draw)
         if self.game_no:
-            TextPosition(f"ZH Wild Nr.: {self.game_no}", 36, 20, 1.409 if weight else 1.24, False).draw(draw)
+            TextPosition("ZH Wild Nr.: {}".format(self.game_no), 36, 20, 1.409 if weight else 1.24, False).draw(draw)
 
         if weight:
-            TextPosition(f"Gewicht: {weight}g", 36, 20, 1.24, False).draw(draw)
-            TextPosition(f"Preis: CHF {cut.price_per_kg * (weight / 1000):.2f}", 36, 1.086, 1.24, True).draw(draw)
-            TextPosition(f"(CHF {cut.price_per_kg:.2f}/kg)", 36, 1.086, 1.107, True).draw(draw)
+            TextPosition("Gewicht: {}g".format(weight), 36, 20, 1.24, False).draw(draw)
+            TextPosition("Preis: CHF {:.2f}".format(cut.price_per_kg * (weight / 1000)), 36, 1.086, 1.24, True).draw(draw)
+            TextPosition("(CHF {:.2f}/kg)".format(cut.price_per_kg), 36, 1.086, 1.107, True).draw(draw)
 
         animal_icon = Image.open(self.animal.image_source)
         img.paste(animal_icon, (int(1109 / 20), int((696 - animal_icon.height) / 2)))
@@ -194,6 +195,14 @@ class LosTresCazadoresApp(App):
         for animal in LosTresCazadoresApp.animals:
             self.sm.add_widget(AnimalScreen(animal))
         return self.sm
+
+    def try_shutdown(self):
+        #TODO open popup
+        pass
+
+    def shutdown(self):
+        import os
+        os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
         return LosTresCazadoresApp.config.get("usage", "active_game_sets").split(';')
