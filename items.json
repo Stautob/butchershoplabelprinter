@@ -31,30 +31,6 @@
         {
           "title": "Luder",
           "pricePerKg": 0.00
-        },
-        {
-          "title": "Test",
-          "pricePerKg": 10.00
-        },
-        {
-          "title": "Test22",
-          "pricePerKg": 10.00
-        },
-        {
-          "title": "Test",
-          "pricePerKg": 10.00
-        },
-        {
-          "title": "Test22",
-          "pricePerKg": 10.00
-        },
-        {
-          "title": "Test",
-          "pricePerKg": 10.00
-        },
-        {
-          "title": "Test22",
-          "pricePerKg": 10.00
         }
       ]
     },
@@ -89,6 +65,10 @@
         {
           "title": "Luder",
           "pricePerKg": 0.00
+        },
+        {
+          "title": "Spareribs",
+          "pricePerKg": 10.00
         }
       ]
     },
@@ -134,6 +114,10 @@
         },
         {
           "title": "Magen",
+          "pricePerKg": 10.00
+        },
+        {
+          "title": "Latschen",
           "pricePerKg": 10.00
         }
       ]
