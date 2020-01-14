@@ -10,7 +10,7 @@
             spacing: 10
             size_hint_y: 1
             orientation: 'horizontal'
-            Button:
+            BeepButton:
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_settings
@@ -57,18 +57,18 @@
             padding: 10
             size_hint_y: 1
             orientation: 'horizontal'
-            Button:
+            BeepButton:
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_shutdown
-                on_press: app.shutdown()
+                on_press: app.try_shutdown()
                 CenteredImage:
                     source: 'resources/images/power.png'
             Label:
                 size_hint_x: 8
                 font_size: "40sp"
                 text: "Los Tres Cazadores"
-            Button:
+            BeepButton:
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_settings
@@ -101,8 +101,8 @@
     size_hint: 1,1
     canvas.before:
         BorderImage:
-            border: 16, 16, 16, 16
-            source: root.background_normal
+            border: root.border
+            source: root.background_normal if self.state == 'normal' else root.background_down
             pos: self.pos
             size: self.size
     AnimalImage:
@@ -115,9 +115,10 @@
         padding: 10,0
         text: root.text
 
-<BigButton@Button>:
+<BigButton@BeepButton>:
     font_size: '30sp'
     markup: True
+
 
 <CenteredImage@Image>:
     height: self.parent.height * 0.8

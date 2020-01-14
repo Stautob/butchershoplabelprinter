@@ -5,46 +5,42 @@ from math import ceil
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
-from brother_ql.cli import discover, discover_and_list_available_devices
 from kivy.app import App
 from kivy.config import ConfigParser
 from kivy.factory import Factory
 from kivy.properties import ListProperty, StringProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
-from brother_ql.models import Model
-# from brother_ql.labels import label_type_specs, label_sizes
-from brother_ql import BrotherQLRaster, create_label, conversion
-from kivy.uix.settings import Settings
-from kivy.uix.widget import Widget
-
+from BeepBehavior import BeepBehavior
 from DummyScale import DummyScale
 from ExtendedSettings import ExtendedSettings
 from ManualScale import ManualScale
 
 
-class AnimalButton(ButtonBehavior, BoxLayout):
+class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):
     background_color = ListProperty([1, 1, 1, 1])
     background_normal = StringProperty('atlas://data/images/defaulttheme/button')
 
-    # background_down = StringProperty(
-    #     background_disabled_normal=StringProperty('atlas://data/images/defaulttheme/button_disabled'))
-    # background_disabled_down = StringProperty('atlas://data/images/defaulttheme/button_disabled_pressed')
-    # border = ListProperty([16, 16, 16, 16])
+    background_down = StringProperty(
+        background_disabled_normal=StringProperty('atlas://data/images/defaulttheme/button_disabled'))
+    background_disabled_down = StringProperty('atlas://data/images/defaulttheme/button_disabled_pressed')
+    border = ListProperty([16, 16, 16, 16])
 
     def __init__(self, text, image_source):
         super(AnimalButton, self).__init__()
         self.text = text
         self.source = image_source
 
-    # TODO make button blue on click
-    # def on_press(self):
-    #     self.ids.
-    #
-    # def on_release(self):
-    #     pass
+
+class BeepButton(Button, BeepBehavior):
+
+    def __init__(self, **kwargs):
+        super(BeepButton, self).__init__(**kwargs)
 
 
 class MainScreen(Screen):
@@ -115,18 +111,38 @@ class AnimalScreen(Screen):
         printer = config.get("printer", "printer_id")
         qlr = BrotherQLRaster(config.get("printer", "printer_model"))
         qlr.exception_on_warning = True
-        # TODO test if this threshold is sensible
         instructions = convert(qlr=qlr,
                                cut=config.getboolean("printer", "printer_cut"),
                                label=config.get("printer", "printer_label_size"),
                                images=[image],
                                threshold=99)
 
-        # TODO add method to check if an error occured
         try:
-            send(instructions=instructions, printer_identifier=printer, backend_identifier="pyusb", blocking=False)
+            status = send(instructions=instructions, printer_identifier=printer, backend_identifier="pyusb",
+                          blocking=True)
+            if status["outcome"] == "error":
+                error = status["printer_state"]["errors"][0]
+                translation = error
+                if error == 'Media cannot be fed (also when the media end is detected)':
+                    translation = "Keine Etiketten!"
+                elif error == "End of media (die-cut size only)":
+                    translation = "Etiketten aufgebraucht! Bitte nachfüllen."
+                self.popup("Fehler", translation)
+            print(status)
         except ValueError as e:
+            if e.args and "Device not found" in e.args[0]:
+                self.popup("Fehler", "Drucker nicht gefunden!\nIst der Drucker eingeschaltet?")
             print(e)
+
+    def popup(self, text, translation):
+        button = BeepButton(text="OK", font_size="24sp")
+        label = Label(text=translation, font_size="24sp")
+        content = BoxLayout(orientation="vertical")
+        content.add_widget(label)
+        content.add_widget(button)
+        popup = Popup(title=text, title_align="center", title_size="30sp", content=content, size_hint=(0.7, 0.3))
+        button.bind(on_release=popup.dismiss)
+        popup.open()
 
     def fill_in_label(self, cut, weight):
         img = Image.open("resources/label/empty_label.png")
@@ -139,7 +155,8 @@ class AnimalScreen(Screen):
 
         if weight:
             TextPosition("Gewicht: {}g".format(weight), 36, 20, 1.24, False).draw(draw)
-            TextPosition("Preis: CHF {:.2f}".format(cut.price_per_kg * (weight / 1000)), 36, 1.086, 1.24, True).draw(draw)
+            TextPosition("Preis: CHF {:.2f}".format(cut.price_per_kg * (weight / 1000)), 36, 1.086, 1.24, True).draw(
+                draw)
             TextPosition("(CHF {:.2f}/kg)".format(cut.price_per_kg), 36, 1.086, 1.107, True).draw(draw)
 
         animal_icon = Image.open(self.animal.image_source)
@@ -197,10 +214,18 @@ class LosTresCazadoresApp(App):
         return self.sm
 
     def try_shutdown(self):
-        #TODO open popup
-        pass
+        btn_ok = BeepButton(text="OK", font_size="24sp")
+        btn_cncl = BeepButton(text="Abbrechen", font_size="24sp")
+        content = BoxLayout(orientation="horizontal", spacing=10)
+        content.add_widget(btn_cncl)
+        content.add_widget(btn_ok)
+        popup = Popup(title="Drucker Herunterfahren?", title_align="center", title_size="30sp", content=content,
+                      size_hint=(0.7, 0.3))
+        btn_cncl.bind(on_release=popup.dismiss)
+        btn_ok.bind(on_release=self.shutdown)
+        popup.open()
 
-    def shutdown(self):
+    def shutdown(self, ignored):
         import os
         os.system('systemctl poweroff')
 
