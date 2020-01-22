@@ -1,5 +1,7 @@
 #:kivy 1.0.0
 #:import Image kivy.uix.image
+#:import Factory kivy.factory.Factory
+
 <AnimalScreen>:
     game_no: tif_game_no.text
     BoxLayout:
@@ -25,15 +27,14 @@
                 id: lbl_title
                 size_hint_x: 5
                 font_size: "40sp"
-            TextInput:
+            ClickableBeepLabel:
                 id: tif_game_no
                 size_hint_x: 2
-                hint_text: "Wild Nr."
+                text: "Wild Nr."
+                on_press: root.open_game_no_popup()
                 valign: "middle"
                 multiline: False
-                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
-                input_type: "number"
-                input_filter: "int"
+#                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
                 font_size: "30sp"
         ScrollView:
             size_hint_y: 6
@@ -61,7 +62,7 @@
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_shutdown
-                on_press: app.try_shutdown()
+                on_release: app.try_shutdown()
                 CenteredImage:
                     source: 'resources/images/power.png'
             Label:
@@ -119,6 +120,19 @@
     font_size: '30sp'
     markup: True
 
+<NumericInput>:
+    input_type: "number"
+    input_filter: "int"
+
+<ClickableBeepLabel>:
+    font_size: "30sp"
+    color: 0, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
 <CenteredImage@Image>:
     height: self.parent.height * 0.8
@@ -136,24 +150,152 @@
     x: self.parent.x
     allow_stretch: True
 
-<ScalePopup>:
+<GameNoPopup@Popup>:
     auto_dismiss: False
-    size_hint: 0.5,0.3
-    title: "Gewicht Eingeben"
+    title: "Wildnummer Eingeben"
+    size_hint: 0.5,0.9
+    title_size: "24sp"
     title_align: "center"
     BoxLayout:
         orientation: "vertical"
         TextInput:
-            id: tif_weight
+            id: tif_pu
             valign: "middle"
             halign: "center"
             multiline: False
+            size_hint_y: 1
             padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
             input_type: "number"
             input_filter: "int"
             font_size: "30sp"
-        Button:
-            keep_ratio: True
-            id: btn_ok
-            on_release: root.finish()
-            text: "OK"
+        GridLayout:
+            padding: 10,10,10,10
+            size_hint_y: 4
+            height: self.width/2
+            cols: 3
+            rows: 4
+            spacing: 10
+            BeepButton:
+                on_release: tif_pu.text += "7"
+                font_size: "24sp"
+                text: "7"
+            BeepButton:
+                on_release: tif_pu.text += "8"
+                font_size: "24sp"
+                text: "8"
+            BeepButton:
+                on_release: tif_pu.text += "9"
+                font_size: "24sp"
+                text: "9"
+            BeepButton:
+                on_release: tif_pu.text += "4"
+                font_size: "24sp"
+                text: "4"
+            BeepButton:
+                on_release: tif_pu.text += "5"
+                font_size: "24sp"
+                text: "5"
+            BeepButton:
+                on_release: tif_pu.text += "6"
+                font_size: "24sp"
+                text: "6"
+            BeepButton:
+                on_release: tif_pu.text += "1"
+                font_size: "24sp"
+                text: "1"
+            BeepButton:
+                on_release: tif_pu.text += "2"
+                font_size: "24sp"
+                text: "2"
+            BeepButton:
+                on_release: tif_pu.text += "3"
+                font_size: "24sp"
+                text: "3"
+            BeepButton:
+                on_release: tif_pu.text = tif_pu.text[0:-1]
+                font_size: "24sp"
+                text: "⌫"
+            BeepButton:
+                on_release: tif_pu.text += "0"
+                font_size: "24sp"
+                text: "0"
+            BeepButton:
+                id: btn_ok
+                on_release: root.finish()
+                font_size: "24sp"
+                text: "OK"
+
+<ScalePopup>:
+    auto_dismiss: False
+    title: "Gewicht Eingeben"
+    size_hint: 0.5,0.9
+    title_size: "24sp"
+    title_align: "center"
+    BoxLayout:
+        orientation: "vertical"
+        TextInput:
+            id: tif_pu
+            valign: "middle"
+            halign: "center"
+            multiline: False
+            size_hint_y: 1
+            padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+            input_type: "number"
+            input_filter: "int"
+            font_size: "30sp"
+        GridLayout:
+            padding: 10,10,10,10
+            size_hint_y: 4
+            height: self.width/2
+            cols: 3
+            rows: 4
+            spacing: 10
+            BeepButton:
+                on_release: tif_pu.text += "7"
+                font_size: "24sp"
+                text: "7"
+            BeepButton:
+                on_release: tif_pu.text += "8"
+                font_size: "24sp"
+                text: "8"
+            BeepButton:
+                on_release: tif_pu.text += "9"
+                font_size: "24sp"
+                text: "9"
+            BeepButton:
+                on_release: tif_pu.text += "4"
+                font_size: "24sp"
+                text: "4"
+            BeepButton:
+                on_release: tif_pu.text += "5"
+                font_size: "24sp"
+                text: "5"
+            BeepButton:
+                on_release: tif_pu.text += "6"
+                font_size: "24sp"
+                text: "6"
+            BeepButton:
+                on_release: tif_pu.text += "1"
+                font_size: "24sp"
+                text: "1"
+            BeepButton:
+                on_release: tif_pu.text += "2"
+                font_size: "24sp"
+                text: "2"
+            BeepButton:
+                on_release: tif_pu.text += "3"
+                font_size: "24sp"
+                text: "3"
+            BeepButton:
+                on_release: tif_pu.do_backspace()
+                font_size: "24sp"
+                text: "⌫"
+            BeepButton:
+                on_release: tif_pu.text += "0"
+                font_size: "24sp"
+                text: "0"
+            BeepButton:
+                id: btn_ok
+                on_release: root.finish()
+                font_size: "24sp"
+                text: "OK"

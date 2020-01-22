@@ -11,12 +11,12 @@ class ScalePopup(Popup):
         Clock.schedule_once(self.show_keyboard)
 
     def show_keyboard(self, event):
-        self.ids.tif_weight.focus = True
+        self.ids.tif_pu.focus = True
 
     def finish(self):
         self.dismiss()
-        input = self.ids.tif_weight.text
-        self.callback(0 if not input else int(input))
+        weight = self.ids.tif_pu.text
+        self.callback(0 if not weight else int(weight))
 
 
 class ManualScale:

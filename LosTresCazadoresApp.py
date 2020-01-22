@@ -7,6 +7,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 from kivy.app import App
 from kivy.config import ConfigParser
+from kivy.core.window import Window
 from kivy.factory import Factory
 from kivy.properties import ListProperty, StringProperty
 from kivy.uix.behaviors import ButtonBehavior
@@ -15,6 +16,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
+from kivy.uix.textinput import TextInput
 
 from BeepBehavior import BeepBehavior
 from DummyScale import DummyScale
@@ -37,10 +39,35 @@ class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):
         self.source = image_source
 
 
+class NumericInput(TextInput):
+
+    def __init__(self,**kwargs):
+        super(NumericInput, self).__init__(**kwargs)
+        keyboard = Window.request_keyboard(self.keyboard_close, self, input_type="number")
+        if keyboard.widget:
+            vkeyboard = keyboard.widget
+            vkeyboard.layout = "numeric.json"
+
+    def keyboard_close(self):
+        pass
+
+
 class BeepButton(Button, BeepBehavior):
 
     def __init__(self, **kwargs):
         super(BeepButton, self).__init__(**kwargs)
+
+
+class GameNoPopup(Popup):
+
+    def __init__(self, callback):
+        super(GameNoPopup, self).__init__()
+        self.callback = callback
+
+    def finish(self):
+        self.dismiss()
+        self.callback(self.ids.tif_pu.text)
+
 
 
 class MainScreen(Screen):
@@ -135,12 +162,12 @@ class AnimalScreen(Screen):
             print(e)
 
     def popup(self, text, translation):
-        button = BeepButton(text="OK", font_size="24sp")
+        button = BeepButton(text="OK", font_size="24sp", size_hint=(0.3, 0.3), padding=(20, 20), pos_hint={'center_x': 0.5})
         label = Label(text=translation, font_size="24sp")
         content = BoxLayout(orientation="vertical")
         content.add_widget(label)
         content.add_widget(button)
-        popup = Popup(title=text, title_align="center", title_size="30sp", content=content, size_hint=(0.7, 0.3))
+        popup = Popup(title=text, title_align="center", title_size="30sp", content=content, size_hint=(0.7, 0.5))
         button.bind(on_release=popup.dismiss)
         popup.open()
 
@@ -162,6 +189,18 @@ class AnimalScreen(Screen):
         animal_icon = Image.open(self.animal.image_source)
         img.paste(animal_icon, (int(1109 / 20), int((696 - animal_icon.height) / 2)))
         return img
+
+    def open_game_no_popup(self):
+        Factory.GameNoPopup(self.set_game_no).open()
+
+    def set_game_no(self, no):
+        self.ids.tif_game_no.text = no
+
+
+class ClickableBeepLabel(ButtonBehavior, Label, BeepBehavior):
+
+    def __init__(self, **kwargs):
+        super(ClickableBeepLabel, self).__init__(**kwargs)
 
 
 class Cut:
