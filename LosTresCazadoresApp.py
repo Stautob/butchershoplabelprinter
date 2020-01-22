@@ -163,7 +163,7 @@ class AnimalScreen(Screen):
 
     def popup(self, text, translation):
         button = BeepButton(text="OK", font_size="24sp", size_hint=(0.3, 0.3), padding=(20, 20), pos_hint={'center_x': 0.5})
-        label = Label(text=translation, font_size="24sp")
+        label = Label(text=translation, font_size="24sp", valign='middle')
         content = BoxLayout(orientation="vertical")
         content.add_widget(label)
         content.add_widget(button)
