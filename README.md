@@ -46,5 +46,5 @@ To login automatically after boot, the original `/etc/systemd/system/getty.targe
 
 ### Kivy config
 Those changes might need to be done in the kivy config file (`/home/sysop/.kivy/config.ini`)
-* To use a vitual keyboard complete the line `keyboard_mode = ` with `systemanddock`
+* To deactivate the vitual keyboard complete the line `keyboard_mode = ` with `system`
 * If double keystrokes occur, remove the line `%(name)s = probesysfs,provider=hidinput`.
