@@ -54,7 +54,7 @@ class SettingMultipleOptions(SettingItem):
         self.fbind('on_release', self._create_popup)
 
     def _set_option(self, instance):
-        tag = f"{instance.text};"
+        tag = "{};".format(instance.text)
         if tag in self.value:
             self.value = self.value.replace(tag, "")
         else:
@@ -74,7 +74,7 @@ class SettingMultipleOptions(SettingItem):
         content.add_widget(Widget(size_hint_y=None, height=1))
         uid = str(self.uid)
         for option in self.options:
-            state = 'down' if f"{option};" in self.value else 'normal'
+            state = 'down' if "{};".format(option) in self.value else 'normal'
             btn = ToggleButton(text=option, state=state, group=uid)
             btn.bind(on_release=self._set_option)
             content.add_widget(btn)
