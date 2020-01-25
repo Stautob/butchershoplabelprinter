@@ -1,4 +1,4 @@
-# butchershoplabelprinter
+# Butcher shop label printer
 Raspberry PI based label-printer for my butcher shop using the following hardware:
 * Raspberry PI >2
 * Brother QL-800
@@ -40,6 +40,9 @@ ExecStart=/bin/sh -c ‘/bin/echo 1 > /sys/class/backlight/rpi_backlight/bl_powe
 WantedBy=reboot.target halt.target poweroff.target
 ```
 This service must be enabled using `sudo systemctl enable rpi-display-backlight`
+
+### Enable auto-login on tty1
+To login automatically after boot, the original `/etc/systemd/system/getty.target.wants/getty@tty1.service` must be moved to `/etc/systemd/system/getty.target.wants/getty@tty2.service`. Then the file `/etc/systemd/system/autologin@.service` must be symlinked to `/etc/systemd/system/getty.target.wants/getty@tty1.service`. Next, the username in the `autologin@.service` file must be changed from `pi` to `sysop`. After a reboot the user sysop should be logged in automatically.
 
 ### Kivy config
 Those changes might need to be done in the kivy config file (`/home/sysop/.kivy/config.ini`)
