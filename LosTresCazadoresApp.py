@@ -6,6 +6,7 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.config import ConfigParser
 from kivy.core.window import Window
 from kivy.factory import Factory
@@ -261,10 +262,10 @@ class LosTresCazadoresApp(App):
         popup = Popup(title="Drucker Herunterfahren?", title_align="center", title_size="30sp", content=content,
                       size_hint=(0.7, 0.3))
         btn_cncl.bind(on_release=popup.dismiss)
-        btn_ok.bind(on_release=self.shutdown)
+        btn_ok.bind(on_release=Clock.schedule_once(lambda ignored: self.shutdown(), 0.11))
         popup.open()
 
-    def shutdown(self, ignored):
+    def shutdown(self):
         import os
         os.system('systemctl poweroff')
 
