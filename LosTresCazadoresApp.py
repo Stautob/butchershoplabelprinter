@@ -42,7 +42,7 @@ class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):
 
 class NumericInput(TextInput):
 
-    def __init__(self,**kwargs):
+    def __init__(self, **kwargs):
         super(NumericInput, self).__init__(**kwargs)
         keyboard = Window.request_keyboard(self.keyboard_close, self, input_type="number")
         if keyboard.widget:
@@ -70,12 +70,11 @@ class GameNoPopup(Popup):
         self.callback(self.ids.tif_pu.text)
 
 
-
-class MainScreen(Screen):
+class AnimalsScreen(Screen):
     title = "main"
 
     def __init__(self, animals):
-        super(MainScreen, self).__init__(name=MainScreen.title)
+        super(AnimalsScreen, self).__init__(name=AnimalsScreen.title)
         self.update_animals(animals)
 
     def update_animals(self, animals):
@@ -108,10 +107,10 @@ class TextPosition:
                       font=self.font)
 
 
-class AnimalScreen(Screen):
+class CutScreen(Screen):
 
     def __init__(self, animal):
-        super(AnimalScreen, self).__init__(name=animal.title)
+        super(CutScreen, self).__init__(name=animal.title)
         self.animal = animal
         self.ids.lbl_title.text = animal.title
         self.ids.img_title.source = animal.image_source
@@ -131,7 +130,6 @@ class AnimalScreen(Screen):
             self.fill_in_label([p for p in self.animal.cuts if p.title == btn.text][0], w)))
 
     def send_label_to_printer(self, image):
-        # image.save("sample-out.png")
         from brother_ql.conversion import convert
         from brother_ql.backends.helpers import send
         from brother_ql.raster import BrotherQLRaster
@@ -163,7 +161,8 @@ class AnimalScreen(Screen):
             print(e)
 
     def popup(self, text, translation):
-        button = BeepButton(text="OK", font_size="24sp", size_hint=(0.3, 0.3), padding=(20, 20), pos_hint={'center_x': 0.5})
+        button = BeepButton(text="OK", font_size="24sp", size_hint=(0.3, 0.3), padding=(20, 20),
+                            pos_hint={'center_x': 0.5})
         label = Label(text=translation, font_size="24sp", valign='middle')
         content = BoxLayout(orientation="vertical")
         content.add_widget(label)
@@ -242,15 +241,15 @@ class LosTresCazadoresApp(App):
         self.sm.current = btn.text
 
     def switch_to_main(self):
-        self.sm.current = MainScreen.title
+        self.sm.current = AnimalsScreen.title
 
     def build(self):
         self.settings_cls = ExtendedSettings
-        self.main_widget = MainScreen(self.get_active_animals(self.get_active_game_sets()))
+        self.main_widget = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
         self.sm.add_widget(self.main_widget)
-        self.sm.current = MainScreen.title
+        self.sm.current = AnimalsScreen.title
         for animal in LosTresCazadoresApp.animals:
-            self.sm.add_widget(AnimalScreen(animal))
+            self.sm.add_widget(CutScreen(animal))
         return self.sm
 
     def try_shutdown(self):
@@ -262,11 +261,12 @@ class LosTresCazadoresApp(App):
         popup = Popup(title="Drucker Herunterfahren?", title_align="center", title_size="30sp", content=content,
                       size_hint=(0.7, 0.3))
         btn_cncl.bind(on_release=popup.dismiss)
-        btn_ok.bind(on_release=Clock.schedule_once(lambda ignored: self.shutdown(), 0.11))
+        btn_ok.bind(on_release=lambda ignore: Clock.schedule_once(self.shutdown, 0.11))
         popup.open()
 
-    def shutdown(self):
+    def shutdown(self, ignored):
         import os
+        print("shutdown")
         os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
