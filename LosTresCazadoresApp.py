@@ -83,7 +83,7 @@ class AnimalsScreen(Screen):
         grid_animals.rows = ceil(len(animals) / grid_animals.cols)
         for animal in animals:
             button = Factory.AnimalButton(text=animal.title, image_source=animal.image_source)
-            button.bind(on_press=App.get_running_app().switch_to_button)
+            button.bind(on_release=App.get_running_app().switch_to_button)
             grid_animals.add_widget(button)
 
 
@@ -121,7 +121,7 @@ class CutScreen(Screen):
         grid_cuts.rows = ceil(len(animal.cuts) / grid_cuts.cols)
         for cut in animal.cuts:
             button = Factory.BigButton(text=cut.title, size_hint=(0.333, 0.488))
-            button.bind(on_press=self.print_label)
+            button.bind(on_release=self.print_label)
             grid_cuts.add_widget(button)
 
     def print_label(self, btn):

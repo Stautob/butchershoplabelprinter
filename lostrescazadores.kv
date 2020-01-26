@@ -16,7 +16,7 @@
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_settings
-                on_press: app.switch_to_main()
+                on_release: app.switch_to_main()
                 CenteredImage:
                     source: 'resources/images/back_arrow.png'
             Image:
@@ -31,7 +31,7 @@
                 id: tif_game_no
                 size_hint_x: 2
                 text: "Wild Nr."
-                on_press: root.open_game_no_popup()
+                on_release: root.open_game_no_popup()
                 valign: "middle"
                 multiline: False
 #                padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
@@ -73,7 +73,7 @@
                 size_hint_x: 1
                 keep_ratio: True
                 id: btn_settings
-                on_press: app.open_settings()
+                on_release: app.open_settings()
                 CenteredImage:
                     source: 'resources/images/settings.png'
         ScrollView:
