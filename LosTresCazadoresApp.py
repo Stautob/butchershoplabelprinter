@@ -5,6 +5,9 @@ from math import ceil
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import os 
+os.environ["KIVY_NO_CONSOLELOG"] = "1"
+
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.config import ConfigParser
@@ -56,7 +59,7 @@ class NumericInput(TextInput):
 class BeepButton(Button, BeepBehavior):
 
     def __init__(self, **kwargs):
-        super(BeepButton, self).__init__(**kwargs)
+        super(Button, self).__init__(**kwargs)
 
 
 class GameNoPopup(Popup):
@@ -121,7 +124,7 @@ class CutScreen(Screen):
         grid_cuts.rows = ceil(len(animal.cuts) / grid_cuts.cols)
         for cut in animal.cuts:
             button = Factory.BigButton(text=cut.title, size_hint=(0.333, 0.488))
-            button.bind(on_release=self.print_label)
+            button.bind(on_press=self.print_label)
             grid_cuts.add_widget(button)
 
     def print_label(self, btn):
@@ -265,7 +268,6 @@ class LosTresCazadoresApp(App):
         popup.open()
 
     def shutdown(self, ignored):
-        import os
         print("shutdown")
         os.system('systemctl poweroff')
 
