@@ -57,3 +57,7 @@ To login automatically after boot, the original `/etc/systemd/system/getty.targe
 Those changes might need to be done in the kivy config file (`/home/sysop/.kivy/config.ini`)
 * To deactivate the vitual keyboard complete the line `keyboard_mode = ` with `system`
 * If double keystrokes occur, remove the line `%(name)s = probesysfs,provider=hidinput`.
+
+
+## 3D Printing
+The STL files for the display mount and the mount for the Brother QL-800 can be found in the `3dprint` orphan branch.
