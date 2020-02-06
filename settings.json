@@ -6,7 +6,7 @@
     "options": [
       "Keins",
       "Manuell",
-      "USB"
+      "Kern"
     ],
     "section": "usage",
     "key": "active_scale_module"
