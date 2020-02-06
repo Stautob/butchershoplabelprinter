@@ -257,6 +257,7 @@ class LosTresCazadoresApp(App):
         self.scale.tare()
 
     def build(self):
+        self.power_on_off_scale()
         self.settings_cls = ExtendedSettings
         animals_screen = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
         if not callable(getattr(self.scale, "tare", None)):
@@ -284,6 +285,7 @@ class LosTresCazadoresApp(App):
 
     def shutdown(self, ignored):
         print("shutdown")
+        self.power_on_off_scale()
         os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
@@ -318,7 +320,7 @@ class LosTresCazadoresApp(App):
 
     def power_on_off_scale(self):
         GPIO.output(POWER_PIN, GPIO.HIGH)
-        Clock.schedule(lambda _: GPIO.output(BEEPER_PIN, GPIO.LOW), timeout=BEEPER_DELAY)
+        Clock.schedule_once(lambda _: GPIO.output(POWER_PIN, GPIO.LOW), timeout=POWER_DELAY)
 
     @staticmethod
     def get_scale(value):
