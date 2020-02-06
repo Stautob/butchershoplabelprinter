@@ -22,11 +22,18 @@ from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.textinput import TextInput
 
+
 from BeepBehavior import BeepBehavior
 from DummyScale import DummyScale
 from ExtendedSettings import ExtendedSettings
+from KernScale import KernScale
 from ManualScale import ManualScale
+from RPi import GPIO
 
+GPIO.setmode(GPIO.BCM)
+POWER_PIN = 5
+POWER_DELAY = 0.1
+GPIO.setup(POWER_PIN, GPIO.OUT)
 
 class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):
     background_color = ListProperty([1, 1, 1, 1])
@@ -246,9 +253,17 @@ class LosTresCazadoresApp(App):
     def switch_to_main(self):
         self.sm.current = AnimalsScreen.title
 
+    def tare(self):
+        self.scale.tare()
+
     def build(self):
         self.settings_cls = ExtendedSettings
-        self.main_widget = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
+        animals_screen = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
+        if not callable(getattr(self.scale, "tare", None)):
+            animals_screen.ids.lbl_title.size_hint_x += animals_screen.ids.btn_tare.size_hint_x
+            animals_screen.ids.bl_title_bar.remove_widget(animals_screen.ids.btn_tare)
+
+        self.main_widget = animals_screen
         self.sm.add_widget(self.main_widget)
         self.sm.current = AnimalsScreen.title
         for animal in LosTresCazadoresApp.animals:
@@ -299,6 +314,11 @@ class LosTresCazadoresApp(App):
             self.main_widget.update_animals(self.get_active_animals(value.split(';')))
         elif key == "active_scale_module":
             LosTresCazadoresApp.scale = LosTresCazadoresApp.get_scale(value)
+            #TODO update Tare button
+
+    def power_on_off_scale(self):
+        GPIO.output(POWER_PIN, GPIO.HIGH)
+        Clock.schedule(lambda _: GPIO.output(BEEPER_PIN, GPIO.LOW), timeout=BEEPER_DELAY)
 
     @staticmethod
     def get_scale(value):
@@ -306,8 +326,8 @@ class LosTresCazadoresApp(App):
             return DummyScale()
         elif value == "Manuell":
             return ManualScale()
-        elif value == "USB":
-            return ManualScale()
+        elif value == "Kern":
+            return KernScale()
 
 
 def available_game_sets():

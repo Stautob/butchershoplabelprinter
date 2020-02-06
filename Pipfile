@@ -10,6 +10,7 @@ cython = "*"
 kivy = "*"
 pillow = "*"
 brother-ql = "*"
+pyserial = "*"
 
 [requires]
 python_version = "3"
