@@ -11,9 +11,7 @@ class BeepBehavior:
     def __init__(self):
         super(BeepBehavior, self).__init__()
         self.bind(on_press=self.beep)
-        self.beep_trigger = Clock.create_trigger(lambda _: GPIO.output(BEEPER_PIN, GPIO.LOW), timeout=BEEPER_DELAY)
 
     def beep(self, _):
         GPIO.output(BEEPER_PIN, GPIO.HIGH)
-        print("BEEEP!")
-        self.beep_trigger()
+        Clock.schedule_once(lambda _: GPIO.output(BEEPER_PIN, GPIO.LOW), timeout=BEEPER_DELAY)
