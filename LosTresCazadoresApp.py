@@ -1,12 +1,13 @@
 import json
 from datetime import date
 from math import ceil
+import time
 
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import os
-# os.environ["KIVY_NO_CONSOLELOG"] = "1"
+#os.environ["KIVY_NO_CONSOLELOG"] = "1"
 
 from kivy.app import App
 from kivy.clock import Clock
@@ -30,9 +31,8 @@ from ManualScale import ManualScale
 from RPi import GPIO
 
 GPIO.setmode(GPIO.BCM)
-POWER_PIN = 5
+POWER_PIN = 16
 POWER_DELAY = 0.1
-GPIO.setup(POWER_PIN, GPIO.OUT)
 
 
 class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):
@@ -262,10 +262,10 @@ class LosTresCazadoresApp(App):
     def open_measure_popup(self, weight):
         btn_ok = BeepButton(text="OK", font_size="24sp")
         content = BoxLayout(orientation="vertical", spacing=10)
-        label = Label(text=str(weight) + " g", font_size="24sp")
+        label = Label(text=str(weight) + " g", font_size="30sp")
         content.add_widget(label)
         content.add_widget(btn_ok)
-        popup = Popup(title="Gewicht", title_align="center", title_size="30sp", content=content, size_hint=(0.7, 0.3))
+        popup = Popup(title="Gewicht", title_align="center", title_size="30sp", content=content, size_hint=(0.5, 0.5))
         btn_ok.bind(on_release=popup.dismiss)
         popup.open()
 
@@ -279,7 +279,6 @@ class LosTresCazadoresApp(App):
             as_ids.bl_title_bar.remove_widget(as_ids.btn_tare)
             as_ids.lbl_title.size_hint_x += as_ids.btn_weight.size_hint_x
             as_ids.bl_title_bar.remove_widget(as_ids.btn_weight)
-
 
         self.main_widget = animals_screen
         self.sm.add_widget(self.main_widget)
@@ -302,7 +301,7 @@ class LosTresCazadoresApp(App):
 
     def shutdown(self, ignored):
         print("shutdown")
-        self.power_on_off_scale()
+        toggle_on_off_scale()
         os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
@@ -336,8 +335,7 @@ class LosTresCazadoresApp(App):
             # TODO update Tare button
 
     def power_on_off_scale(self):
-        GPIO.output(POWER_PIN, GPIO.HIGH)
-        Clock.schedule_once(lambda _: GPIO.output(POWER_PIN, GPIO.LOW), timeout=POWER_DELAY)
+        toggle_on_off_scale()
 
     @staticmethod
     def get_scale(value):
@@ -359,5 +357,15 @@ def available_printers():
     return [i["identifier"] for i in available_devices]
 
 
+def toggle_on_off_scale():
+    GPIO.setup(POWER_PIN, GPIO.OUT)
+    GPIO.output(POWER_PIN, GPIO.HIGH)
+    time.sleep(POWER_DELAY)
+    GPIO.cleanup(POWER_PIN)
+    #Clock.schedule_once(lambda _: GPIO.cleanup(POWER_PIN), timeout=POWER_DELAY)
+
 if __name__ == '__main__':
     LosTresCazadoresApp().run()
+    toggle_on_off_scale()
+    GPIO.cleanup()
+

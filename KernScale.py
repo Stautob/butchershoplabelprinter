@@ -14,7 +14,10 @@ class KernScale:
             error_string = s[12:16]
             print(s)
             if not error_string == b"error":
-                callback(float(s[2:12].strip()))
+                try:
+                    callback(float(s[2:12].strip()))
+                except:
+                    print("Error: " + str(s) + " , " + str(s[2:12]))
             else:
                 raise Exception("Waage Error")
 
