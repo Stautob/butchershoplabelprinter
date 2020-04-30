@@ -20,9 +20,17 @@
                     source: 'resources/images/power.png'
             Label:
                 id: lbl_title
-                size_hint_x: 6
+                size_hint_x: 5
                 font_size: "40sp"
                 text: "Los Tres Cazadores"
+            BeepButton:
+                size_hint_x: 1
+                keep_ratio: True
+                id: btn_date
+                color: 0, 0, 0, 1
+                on_release: app.set_date_popup()
+                CenteredImage:
+                    source: 'resources/images/ic_calendar.png'
             BeepButton:
                 size_hint_x: 1
                 keep_ratio: True

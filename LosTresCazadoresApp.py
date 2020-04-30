@@ -22,6 +22,7 @@ from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.textinput import TextInput
+from KivyCalendar import CalendarWidget
 
 from BeepBehavior import BeepBehavior
 from DummyScale import DummyScale
@@ -255,6 +256,16 @@ class LosTresCazadoresApp(App):
 
     def tare(self):
         self.scale.tare()
+
+    def set_date_popup(self):
+        btn_ok = BeepButton(text="OK", font_size="24sp")
+        content = BoxLayout(orientation="vertical", spacing=10)
+        label = CalendarWidget()# Label(text=str(weight) + " g", font_size="30sp")
+        content.add_widget(label)
+        content.add_widget(btn_ok)
+        popup = Popup(title="Datum", title_align="center", title_size="30sp", content=content, size_hint=(0.5, 0.5))
+        btn_ok.bind(on_release=popup.dismiss)
+        popup.open()
 
     def measure_popup(self):
         self.scale.measure(self.open_measure_popup)
