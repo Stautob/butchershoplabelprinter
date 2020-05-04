@@ -234,11 +234,9 @@ class Animal:
 
 def set_date_if_necessary(dismiss_popup, new_date):
     import os
-    os.system('sudo date +%%Y%%m%%d -s "%(year)s%(month)s%(day)s"' % {"year": new_date[2],
-                                                                      "month": new_date[1],
-                                                                      "day": new_date[0]})
-    os.system('sudo date +%T -s "18:00:00"')
-    os.system('sudo /sbin/hwclock -w')
+    print('sudo date +%Y%m%d -s "{}{:>02}{:>02}"'.format(new_date[2], new_date[1], new_date[0]))
+    print('sudo date +%T -s "18:00:00"')
+    print('sudo /sbin/hwclock -w')
     dismiss_popup()
 
 
