@@ -1,5 +1,6 @@
 import json
 from datetime import date
+import datetime
 from math import ceil
 import time
 
@@ -22,8 +23,8 @@ from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.textinput import TextInput
-from KivyCalendar import CalendarWidget
 
+from datepicker import DatePicker
 from BeepBehavior import BeepBehavior
 from DummyScale import DummyScale
 from ExtendedSettings import ExtendedSettings
@@ -231,6 +232,16 @@ class Animal:
         self.cuts = [Cut(p['title'], p['pricePerKg']) for p in animal_json['cuts']]
 
 
+def set_date_if_necessary(dismiss_popup, new_date):
+    import os
+    os.system('sudo date +%%Y%%m%%d -s "%(year)s%(month)s%(day)s"' % {"year": new_date[2],
+                                                                      "month": new_date[1],
+                                                                      "day": new_date[0]})
+    os.system('sudo date +%T -s "18:00:00"')
+    os.system('sudo /sbin/hwclock -w')
+    dismiss_popup()
+
+
 class LosTresCazadoresApp(App):
     config = ConfigParser()
     config.read('lostrescazadores.ini')
@@ -260,11 +271,13 @@ class LosTresCazadoresApp(App):
     def set_date_popup(self):
         btn_ok = BeepButton(text="OK", font_size="24sp")
         content = BoxLayout(orientation="vertical", spacing=10)
-        label = CalendarWidget()# Label(text=str(weight) + " g", font_size="30sp")
+        label = DatePicker(font_size="30sp")# Label(text=str(weight) + " g", font_size="30sp")
+        label.halign = "center"
+        label.valign = "middle"
         content.add_widget(label)
         content.add_widget(btn_ok)
         popup = Popup(title="Datum", title_align="center", title_size="30sp", content=content, size_hint=(0.5, 0.5))
-        btn_ok.bind(on_release=popup.dismiss)
+        btn_ok.bind(on_release=lambda ignored: set_date_if_necessary(popup.dismiss, label.text.split(".")))
         popup.open()
 
     def measure_popup(self):
