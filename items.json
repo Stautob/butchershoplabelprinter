@@ -10,23 +10,27 @@
       "cuts": [
         {
           "title": "Hack",
-          "pricePerKg": 10.00
+          "pricePerKg": 30.00
         },
         {
           "title": "Pfeffer",
-          "pricePerKg": 10.00
+          "pricePerKg": 30.00
         },
         {
           "title": "Schnitzel",
-          "pricePerKg": 10.00
+          "pricePerKg": 55.00
         },
         {
           "title": "Rücken",
-          "pricePerKg": 10.00
+          "pricePerKg": 60.00
+        },
+        {
+          "title": "Rücken Ausgel.",
+          "pricePerKg": 80.00
         },
         {
           "title": "Filet",
-          "pricePerKg": 10.00
+          "pricePerKg": 75.00
         },
         {
           "title": "Luder",
@@ -44,23 +48,27 @@
       "cuts": [
         {
           "title": "Hack",
-          "pricePerKg": 10.00
+          "pricePerKg": 20.00
         },
         {
           "title": "Pfeffer",
-          "pricePerKg": 10.00
+          "pricePerKg": 20.00
         },
         {
           "title": "Schnitzel",
-          "pricePerKg": 10.00
+          "pricePerKg": 45.00
         },
         {
           "title": "Rücken",
-          "pricePerKg": 10.00
+          "pricePerKg": 50.00
+        },
+        {
+          "title": "Rücken Ausgel.",
+          "pricePerKg": 70.00
         },
         {
           "title": "Filet",
-          "pricePerKg": 10.00
+          "pricePerKg": 65.00
         },
         {
           "title": "Luder",
@@ -68,7 +76,7 @@
         },
         {
           "title": "Spareribs",
-          "pricePerKg": 10.00
+          "pricePerKg": 25.00
         }
       ]
     },
@@ -110,15 +118,15 @@
       "cuts": [
         {
           "title": "Brust",
-          "pricePerKg": 10.00
+          "pricePerKg": 40.00
         },
         {
           "title": "Magen",
-          "pricePerKg": 10.00
+          "pricePerKg": 15.00
         },
         {
           "title": "Latschen",
-          "pricePerKg": 10.00
+          "pricePerKg": 5.00
         }
       ]
     },
@@ -147,6 +155,20 @@
         {
           "title": "TODO",
           "pricePerKg": 10.00
+        }
+      ]
+    },
+    {
+      "title": "Taube",
+      "gameNo": false,
+      "sets": [
+        "Federwild"
+      ],
+      "icon_source": "resources/images/ic_dove_m.png",
+      "cuts": [
+        {
+          "title": "Brust",
+          "pricePerKg": 40.00
         }
       ]
     }
