@@ -4,6 +4,9 @@ Raspberry PI based label-printer for my butcher shop using the following hardwar
 * Brother QL-800
 * RasClock RTC Module
 * Raspberry Pi Touchscreen Pi Touch Display 7
+* Optionally a buzzer module operatable from GPIO
+* Optionally a double relais board operatable from GPIO
+* Optionally a kern scale with RS232 interface (Or any other compatible scale but only a scale module for the kern scale is provided)
 
 ## OS
 This printer uses the [KivyPie](http://kivypie.mitako.eu) distribution.
@@ -57,6 +60,10 @@ To login automatically after boot, the original `/etc/systemd/system/getty.targe
 Those changes might need to be done in the kivy config file (`/home/sysop/.kivy/config.ini`)
 * To deactivate the vitual keyboard complete the line `keyboard_mode = ` with `system`
 * If double keystrokes occur, remove the line `%(name)s = probesysfs,provider=hidinput`.
+
+### Hardware Modifications
+The label printer and the scale controller can be modified so the ON/OFF buttons can be activated with the relais. 
+Both are quite easy to open, solder, and to lead the wires out of the case. The wires may not be put on a single relais!
 
 
 ## 3D Printing
