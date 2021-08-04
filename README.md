@@ -8,6 +8,9 @@ Raspberry PI based label-printer for my butcher shop using the following hardwar
 * Optionally a double relais board operatable from GPIO
 * Optionally a kern scale with RS232 interface (Or any other compatible scale but only a scale module for the kern scale is provided)
 
+## Label Example (With current template)
+![LosTresCazadores_example](https://user-images.githubusercontent.com/1346821/128201470-6f1ff850-afa4-4e39-b2d0-9e2977cb308b.png)
+
 ## OS
 This printer uses the [KivyPie](http://kivypie.mitako.eu) distribution.
 After installation, the root file system should be expanded to the whole sd-card using the command
