@@ -70,6 +70,7 @@ class DatePicker(TextInput):
         pHint: 0.7,0.4
     would result in a size_hint of 0.7,0.4 being used to create the popup
     """
+
     pHint_x = NumericProperty(0.7)
     pHint_y = NumericProperty(0.7)
     pHint = ReferenceListProperty(pHint_x, pHint_y)
@@ -80,8 +81,11 @@ class DatePicker(TextInput):
         self.touch_switch = touch_switch
         self.init_ui()
 
+
     def init_ui(self):
         self.text = today_date()
+        self.halign = "center"
+        self.valign = "middle"
         # Calendar
         self.cal = CalendarWidget(as_popup=True,
                                   touch_switch=self.touch_switch)

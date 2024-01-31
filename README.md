@@ -22,12 +22,13 @@ The tmp partition is to small to install the pip modules as usual. Using this co
 `TEMPDIR=/home/sysop/tmp/ sudo pip3 install --cache-dir=/home/sysop/tmp/ --build /home/sysop/tmp/ [package]`
 ### System packages
 * Install libfreetype6-dev
-### PIP packages
-* pipenv
-* pillow
-* brother-ql
+
+### Poetry
+* `$poetry install`
+* `$poetry run bslp`
 
 ## Config
+
 
 ### Turning off the display
 This solution does the same as Raspbian does.
@@ -46,7 +47,7 @@ ExecStart=/bin/sh -c ‘/bin/echo 1 > /sys/class/backlight/rpi_backlight/bl_powe
 [Install]
 WantedBy=reboot.target halt.target poweroff.target
 ```
-This service must be enabled using `sudo systemctl enable rpi-display-backlight`
+This service must be enabled using `$sudo systemctl enable rpi-display-backlight`
 
 ### Add udev rule for the printer
 In order to allow any user to use the USB label printer an according udev rule must be added.

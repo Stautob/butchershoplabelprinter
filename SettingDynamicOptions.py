@@ -22,7 +22,7 @@ class SettingDynamicOptions(SettingOptions):
     '''
 
     def _create_popup(self, instance):
-        # Update the options
+        # Update the 
         mod_name, func_name = self.function_string.rsplit('.', 1)
         mod = importlib.import_module(mod_name)
         func = getattr(mod, func_name)

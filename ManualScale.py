@@ -22,3 +22,5 @@ class ManualScale:
 
     def measure(self, callback):
         Factory.ScalePopup(callback).open()
+
+

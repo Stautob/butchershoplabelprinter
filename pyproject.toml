@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ButcherShopLabelPrinter"
+version = "0.1.1"
+description = ""
+authors = ["Stautob"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+bslp = "ButcherShopLabelPrinter:start"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Cython = "^3.0.8"
+Kivy = "^2.3.0"
+pillow = "^10.2.0"
+brother-ql = "^0.9.4"
+pyserial = "^3.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

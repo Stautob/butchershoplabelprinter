@@ -2,77 +2,64 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1109"
    height="696"
    viewBox="0 0 293.42292 184.15"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
    sodipodi:docname="label.svg"
-   inkscape:export-filename="/home/tstauber/git/stautob/butchershoplabelprinter/resources/label/empty_label.png"
+   inkscape:export-filename="..\label\empty_label.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
-   enable-background="new">
-  <defs
-     id="defs2">
-    <filter
+   enable-background="new"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><defs
+     id="defs2"><filter
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
-       id="filter7687">
-      <feBlend
+       id="filter7687"><feBlend
          inkscape:collect="always"
          mode="darken"
          in2="BackgroundImage"
-         id="feBlend7689" />
-    </filter>
-  </defs>
-  <sodipodi:namedview
+         id="feBlend7689" /></filter></defs><sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.6704545"
-     inkscape:cx="702.36766"
-     inkscape:cy="512.59083"
+     inkscape:zoom="0.29529743"
+     inkscape:cx="419.91561"
+     inkscape:cy="404.67674"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1600"
-     inkscape:window-height="851"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
+     inkscape:window-width="1350"
+     inkscape:window-height="1230"
+     inkscape:window-x="939"
+     inkscape:window-y="124"
+     inkscape:window-maximized="0"
+     inkscape:showpageshadow="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" /><metadata
+     id="metadata5"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-112.85)">
-    <text
+     transform="translate(0,-112.85)"><text
        inkscape:label="price_per_kg"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="277.26706"
        y="272.70801"
        id="price_per_kg"
@@ -81,11 +68,10 @@
          id="tspan4518-6-6-0"
          x="277.26706"
          y="272.70801"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;text-anchor:end;stroke-width:0.26256499px">(CHF 3.00/kg)</tspan></text>
-    <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;text-anchor:end;stroke-width:0.262565px">(CHF 3.00/kg)</tspan></text><text
        inkscape:label="price"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="277.65231"
        y="257.66443"
        id="price"
@@ -94,11 +80,10 @@
          id="tspan4518-6-6-7"
          x="277.65231"
          y="257.66443"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;text-anchor:end;stroke-width:0.26256499px">Preis: CHF 00.30</tspan></text>
-    <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;font-family:Quicksand;-inkscape-font-specification:Quicksand;text-align:end;text-anchor:end;stroke-width:0.262565px">Preis: CHF 00.30</tspan></text><text
        inkscape:label="game_no"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="13.934537"
        y="289.58887"
        id="game_no"
@@ -107,11 +92,10 @@
          id="tspan4518-6-6-2-2"
          x="13.934537"
          y="289.58887"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">Wild Nr.: 039159</tspan></text>
-    <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.262565px">Wild Nr.: 039159</tspan></text><text
        inkscape:label="date"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="13.978143"
        y="272.58948"
        id="date"
@@ -120,11 +104,10 @@
          id="tspan4518-6-6-2"
          x="13.978143"
          y="272.58948"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">Verpackt: 30.12.2019</tspan></text>
-    <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.262565px">Verpackt: 30.12.2019</tspan></text><text
        inkscape:label="weight"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="13.842142"
        y="256.7211"
        id="weight"
@@ -133,11 +116,10 @@
          id="tspan4518-6-6-8"
          x="13.842142"
          y="256.7211"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">Gewicht: 300g </tspan></text>
-    <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.262565px">Gewicht: 300g </tspan></text><text
        inkscape:label="cut"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="114.03676"
        y="216.70694"
        id="cut"
@@ -146,11 +128,10 @@
          id="tspan4518-6-6"
          x="114.03676"
          y="216.70694"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.93333244px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">cut</tspan></text>
-    <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.262565px">cut</tspan></text><text
        inkscape:label="animal"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.22916698px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26256499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2292px;line-height:125%;font-family:Quicksand;-inkscape-font-specification:Quicksand;letter-spacing:0px;word-spacing:0px;display:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.262565px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter7687)"
        x="114.25725"
        y="192.92966"
        id="animal"
@@ -159,36 +140,47 @@
          id="tspan4518-6"
          x="114.25725"
          y="192.92966"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.75555611px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.26256499px">animal</tspan></text>
-    <path
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7556px;font-family:Quicksand;-inkscape-font-specification:Quicksand;stroke-width:0.262565px">animal</tspan></text><path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 13.98063,155.63159 H 279.44229"
        id="path4589"
        inkscape:connector-curvature="0"
-       inkscape:label="separator" />
-    <text
+       inkscape:label="separator" /><text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:13.22916603px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="146.61224"
-       y="141.68411"
+       style="font-style:normal;font-weight:normal;font-size:11.8806px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.237611px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="112.39381"
+       y="127.24056"
        id="title"
-       inkscape:label="title"><tspan
+       inkscape:label="title"
+       transform="scale(0.89805809,1.1135137)"><tspan
          sodipodi:role="line"
          id="tspan4518"
-         x="146.61224"
-         y="141.68411"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:'FranciscoLucas Briosa';-inkscape-font-specification:'FranciscoLucas Briosa';text-align:center;text-anchor:middle;stroke-width:0.26458332px;letter-spacing:0.45772914px">Los Tres Cazadores</tspan></text>
-    <text
+         x="112.59934"
+         y="127.24056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.8107px;font-family:Jokerman;-inkscape-font-specification:Jokerman;text-align:center;letter-spacing:0.411067px;text-anchor:middle;stroke-width:0.237611px">Jagdgesellschaft</tspan></text><text
        inkscape:label="title"
        id="text7836"
-       y="152.3904"
-       x="207.01143"
-       style="font-style:normal;font-weight:normal;font-size:14.26181316px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.36693096px;font-family:'FranciscoLucas Briosa';-inkscape-font-specification:'FranciscoLucas Briosa';text-align:center;text-anchor:middle;stroke-width:0.26458335px"
-         y="152.3904"
-         x="207.01143"
+       y="104.90949"
+       x="275.02698"
+       style="font-style:normal;font-weight:normal;font-size:27.7172px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.514205px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       transform="scale(0.79291094,1.2611757)"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.2608px;font-family:'Curlz MT';-inkscape-font-specification:'Curlz MT';text-align:center;text-anchor:middle;stroke-width:0.514205px"
+         y="104.90949"
+         x="275.02698"
          id="tspan7834"
-         sodipodi:role="line">Schweizer Wildbret</tspan></text>
-  </g>
-</svg>
+         sodipodi:role="line">Uster Hard</tspan></text><text
+       inkscape:label="title"
+       id="text7836-3"
+       y="147.10077"
+       x="215.16374"
+       style="font-style:normal;font-weight:normal;font-size:14.2618px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.36693px;font-family:'Comic Sans MS';-inkscape-font-specification:'Comic Sans MS';text-align:center;text-anchor:middle;stroke-width:0.264583px"
+         y="147.10077"
+         x="215.16374"
+         id="tspan7834-6"
+         sodipodi:role="line">Mmmh Fein!!!</tspan></text><path
+       style="fill:#000000;stroke-width:0.150512"
+       d="m 254.47327,149.6574 c -0.59264,-0.36135 -0.96465,-1.04836 -0.97503,-1.80064 -0.0116,-0.83857 -0.58099,-0.016 6.25971,-9.04237 1.66254,-2.19372 3.47104,-4.58469 4.0189,-5.31328 1.32211,-1.75823 1.48749,-2.30987 1.49197,-4.97649 0.005,-2.64903 0.18523,-3.15589 1.9285,-5.40705 1.79424,-2.31697 3.30686,-3.55928 5.36779,-4.40855 0.89085,-0.3671 1.26283,-0.43458 2.4082,-0.43688 1.21717,-0.002 1.4278,0.0403 2.0759,0.42125 2.03434,1.19579 2.6081,3.97047 1.49071,7.20892 -0.52374,1.5179 -1.20696,2.713 -2.52628,4.41897 -1.63908,2.11943 -2.1073,2.42739 -4.68856,3.08379 -0.96411,0.24517 -1.92448,0.55816 -2.13414,0.69555 -0.86467,0.56655 -1.92854,1.72648 -3.07932,3.3574 -0.67106,0.95102 -1.52977,2.10244 -1.90825,2.55871 -0.37848,0.45627 -2.14937,2.75991 -3.9353,5.1192 -1.86774,2.46734 -3.44005,4.4015 -3.70123,4.55301 -0.59804,0.34691 -1.49505,0.3334 -2.09357,-0.0315 z m 17.79081,-21.07532 c 0,-0.14035 -0.20471,-0.25649 -0.55146,-0.31285 -0.75893,-0.12336 -1.3157,-0.52191 -1.566,-1.12099 -0.25909,-0.62007 -0.42861,-0.73738 -0.66097,-0.45741 -0.2733,0.32931 0.30158,1.50344 0.92441,1.888 0.60131,0.37127 1.85402,0.37347 1.85402,0.003 z m 2.54797,-0.69061 c 0.13009,-0.13008 0.23652,-0.47201 0.23652,-0.75983 0,-0.44594 -0.071,-0.55318 -0.48056,-0.72536 -0.58265,-0.24499 -1.0632,-0.0734 -1.30969,0.46755 -0.17357,0.38095 -0.0171,0.89699 0.34528,1.13897 0.28779,0.19216 0.96272,0.1244 1.20845,-0.12133 z m -3.73081,-2.85656 c 0.86945,-0.86945 -0.24941,-2.05134 -1.26713,-1.3385 -0.42512,0.29776 -0.4381,0.95235 -0.0276,1.39295 0.40429,0.43396 0.82399,0.41631 1.29475,-0.0544 z m -0.47279,24.64067 c -0.24835,-0.15159 -1.16272,-1.21504 -2.03193,-2.36321 -0.86921,-1.14817 -2.13852,-2.82625 -2.82068,-3.72907 -0.69688,-0.92227 -1.1947,-1.71662 -1.1362,-1.81296 0.0573,-0.0943 0.49217,-0.66102 0.96645,-1.25938 0.47428,-0.59835 0.98362,-1.29323 1.13187,-1.54419 0.14824,-0.25096 0.3149,-0.4387 0.37034,-0.41722 0.18163,0.0704 5.79535,7.4417 6.30945,8.28485 1.08102,1.77296 -1.025,3.91814 -2.7893,2.84118 z m -11.39968,-14.49344 c -0.91428,-0.92906 -1.62159,-1.28229 -3.27531,-1.63569 -2.40691,-0.51435 -3.18374,-1.11793 -5.42413,-4.21436 -0.8086,-1.11755 -1.8489,-2.50603 -2.3118,-3.08551 -0.87161,-1.09113 -1.04384,-1.67698 -0.68832,-2.34128 0.24361,-0.4552 1.01284,-0.78454 1.58271,-0.67762 0.57972,0.10875 0.78653,0.33142 2.9131,3.13659 0.89935,1.18634 1.67095,2.06475 1.81367,2.06475 0.29664,0 0.60964,-0.28511 0.60964,-0.55531 0,-0.10675 -0.84663,-1.31173 -1.88141,-2.67775 -1.64681,-2.17399 -1.8814,-2.55541 -1.8814,-3.05894 0,-0.80586 0.60958,-1.38415 1.45905,-1.38415 0.37174,0 0.73247,0.10413 0.9125,0.2634 0.16374,0.14487 1.05511,1.26184 1.98081,2.48216 0.92569,1.22032 1.8,2.28134 1.94289,2.35781 0.32493,0.1739 0.77884,-0.0579 0.77884,-0.39774 0,-0.13548 -0.81834,-1.32034 -1.81853,-2.63301 -2.24284,-2.94356 -2.41905,-3.45252 -1.4714,-4.24992 0.69711,-0.58658 1.39631,-0.52276 2.07151,0.18907 0.98942,1.04311 4.71608,6.11452 5.1109,6.95515 0.36339,0.77371 0.38964,0.98031 0.40151,3.16077 0.0111,2.05153 0.052,2.42027 0.33833,3.05685 l 0.32561,0.72392 -0.99738,1.30801 c -1.15075,1.50913 -1.56972,1.99497 -1.69147,1.96146 -0.0477,-0.0131 -0.40762,-0.35002 -0.79992,-0.74866 z m 0.0954,-3.74917 c 0.57511,-0.50495 0.85443,-1.30611 0.52612,-1.50901 -0.25515,-0.15769 -0.53067,0.072 -0.64823,0.54042 -0.0974,0.38816 -0.7724,0.82438 -1.27559,0.82438 -0.16479,0 -0.34147,0.0677 -0.39264,0.15051 -0.17207,0.27841 0.089,0.45154 0.68095,0.45154 0.44044,0 0.71875,-0.11486 1.10939,-0.45784 z m -2.73104,-0.35373 c 0.39255,-0.29799 0.33369,-0.94158 -0.11289,-1.23419 -0.34857,-0.22839 -0.40399,-0.22839 -0.75256,0 -0.43393,0.28432 -0.4869,0.77098 -0.12719,1.16846 0.29192,0.32256 0.62523,0.34463 0.99264,0.0657 z m 3.05201,-2.35376 c 0.21588,-0.23854 0.24576,-0.39176 0.13621,-0.69846 -0.30224,-0.84611 -1.4197,-0.64733 -1.4197,0.25254 0,0.72124 0.78691,0.99464 1.28349,0.44592 z"
+       id="path610" /></g></svg>
