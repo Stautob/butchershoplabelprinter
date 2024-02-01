@@ -15,7 +15,7 @@
     "type": "multi_dynamic_options",
     "title": "Sets",
     "desc": "Aktive Wildtier-Sets",
-    "function_string": "ButcherShopLabelPrinter.available_game_sets",
+    "function_string": "butchershoplabelprinter:ButcherShopLabelPrinter.available_game_sets",
     "section": "usage",
     "key": "active_game_sets"
   },
@@ -37,7 +37,7 @@
     "type": "dynamic_options",
     "title": "Printer ID",
     "desc": "Used printer",
-    "function_string": "ButcherShopLabelPrinter.available_printers",
+    "function_string": "butchershoplabelprinter:ButcherShopLabelPrinter.available_printers",
     "section": "printer",
     "key": "printer_id"
   },

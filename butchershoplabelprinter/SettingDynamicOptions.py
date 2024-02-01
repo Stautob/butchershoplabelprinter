@@ -10,6 +10,8 @@ from kivy.uix.settings import SettingOptions, SettingSpacer, SettingItem
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.widget import Widget
 
+from butchershoplabelprinter import ButcherShopLabelPrinter
+
 
 class SettingDynamicOptions(SettingOptions):
     '''Implementation of an option list that creates the items in the possible
@@ -22,10 +24,11 @@ class SettingDynamicOptions(SettingOptions):
     '''
 
     def _create_popup(self, instance):
-        # Update the 
-        mod_name, func_name = self.function_string.rsplit('.', 1)
+        mod_name, attribute_str = self.function_string.rsplit(':', 1)
         mod = importlib.import_module(mod_name)
-        func = getattr(mod, func_name)
+        func = mod
+        for attribute in attribute_str.split('.'):
+            func = getattr(func, attribute)
         self.options = func()
 
         # Call the parent __init__
@@ -101,9 +104,11 @@ class SettingMultipleDynamicOptions(SettingMultipleOptions):
 
     def _create_popup(self, instance):
         # Update the options
-        mod_name, func_name = self.function_string.rsplit('.', 1)
+        mod_name, attribute_str = self.function_string.rsplit(':', 1)
         mod = importlib.import_module(mod_name)
-        func = getattr(mod, func_name)
+        func = mod
+        for attribute in attribute_str.split('.'):
+            func = getattr(func, attribute)
         self.options = func()
 
         # Call the parent __init__
