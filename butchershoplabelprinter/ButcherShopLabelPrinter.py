@@ -24,12 +24,12 @@ from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.textinput import TextInput
 
-from datepicker import DatePicker
-from BeepBehavior import BeepBehavior
-from DummyScale import DummyScale
-from ExtendedSettings import ExtendedSettings
-from KernScale import KernScale
-from ManualScale import ManualScale
+from butchershoplabelprinter.DatePicker import DatePicker
+from butchershoplabelprinter.BeepBehavior import BeepBehavior
+from butchershoplabelprinter.DummyScale import DummyScale
+from butchershoplabelprinter.ExtendedSettings import ExtendedSettings
+from butchershoplabelprinter.KernScale import KernScale
+from butchershoplabelprinter.ManualScale import ManualScale
 from RPi import GPIO
 
 GPIO.setmode(GPIO.BCM)
