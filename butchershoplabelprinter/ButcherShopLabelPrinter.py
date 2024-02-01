@@ -261,6 +261,7 @@ class ButcherShopLabelPrinterApp(App):
 
     with open('items.json') as json_file:
         items = json.load(json_file)
+        print("Items", items)
         animals.extend([Animal(animal) for animal in items['animals']])
 
     def switch_to_button(self, btn):
