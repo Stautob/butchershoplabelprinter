@@ -11,21 +11,29 @@ Raspberry PI based label-printer for my butcher shop using the following hardwar
 ## Label Example (With current template)
 ![LosTresCazadores_example](https://user-images.githubusercontent.com/1346821/128201470-6f1ff850-afa4-4e39-b2d0-9e2977cb308b.png)
 
+## Raspberry PI
+
+
+### Pinout
+By default the following GPIO are used:
+* GPIO 26 - Buzzer 5V
+* GPIO 16 - Relay 5V (On/Off for scale and printer)
+
+
 ## OS
-This printer uses the [KivyPie](http://kivypie.mitako.eu) distribution.
-After installation, the root file system should be expanded to the whole sd-card using the command
-`sudo pipaos-config --expand-rootfs` followed by a restart.
+This printer uses the Raspian OS Lite. The minimal recommended SD card size is 8Gb.
 
 ## Setup
-The tmp partition is to small to install the pip modules as usual. Using this command it will work: 
 
-`TEMPDIR=/home/sysop/tmp/ sudo pip3 install --cache-dir=/home/sysop/tmp/ --build /home/sysop/tmp/ [package]`
 ### System packages
-* Install libfreetype6-dev
+* Install python-dev: `$sudo apt install python-dev`
+* Install opengl: `$sudo apt install freeglut3-dev`
+* Install libmtdev: `$sudo apt install libmtdev-dev`
+* Install libfreetype6-dev ???
 
 ### Poetry
-* `$poetry install`
-* `$poetry run bslp`
+* First install the required packages using `$poetry install`
+* Then run the app using `$poetry run bslp`
 
 ## Config
 

@@ -248,7 +248,7 @@ def set_date_if_necessary(dismiss_popup, new_date):
 
 class ButcherShopLabelPrinterApp(App):
     config = ConfigParser()
-    config.read('ButcherShopLabelPrinter.ini')
+    config.read('butchershoplabelprinter.ini')
 
     sm = ScreenManager(transition=NoTransition())
     animals = []

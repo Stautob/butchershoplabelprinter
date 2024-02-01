@@ -1,6 +1,6 @@
 from kivy.uix.settings import SettingsWithSpinner
 
-import butchershoplabelprinter.SettingDynamicOptions
+from butchershoplabelprinter.SettingDynamicOptions import SettingDynamicOptions
 
 
 class ExtendedSettings(SettingsWithSpinner):
