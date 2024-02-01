@@ -15,6 +15,7 @@ Kivy = "^2.3.0"
 pillow = "^10.2.0"
 brother-ql = "^0.9.4"
 pyserial = "^3.5"
+rpi-gpio = "^0.7.1"
 
 [build-system]
 requires = ["poetry-core"]
