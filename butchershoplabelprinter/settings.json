@@ -37,7 +37,7 @@
     "type": "dynamic_options",
     "title": "Printer ID",
     "desc": "Used printer",
-    "function_string": "butchershoplabelprinter:ButcherShopLabelPrinter.available_printers",
+    "function_string": "butchershoplabelprinter:PrinterUtil.available_printers",
     "section": "printer",
     "key": "printer_id"
   },

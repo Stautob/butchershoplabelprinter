@@ -13,7 +13,7 @@ python = "^3.10"
 Cython = "^3.0.8"
 Kivy = "^2.3.0"
 pillow = "^10.2.0"
-brother-ql = "^0.9.4"
+brother-ql = { git = "https://github.com/Stautob/brother_ql.git" }
 pyserial = "^3.5"
 rpi-gpio = "^0.7.1"
 

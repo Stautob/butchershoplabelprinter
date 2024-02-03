@@ -15,7 +15,8 @@ from kivy.clock import Clock
 from kivy.config import ConfigParser
 from kivy.core.window import Window
 from kivy.factory import Factory
-from kivy.properties import ListProperty, StringProperty
+from kivy.factory import Factory
+from kivy.properties import ListProperty, StringProperty, AliasProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
@@ -126,6 +127,7 @@ class CutScreen(Screen):
         self.animal = animal
         self.ids.lbl_title.text = animal.title
         self.ids.img_title.source = animal.image_source
+
         if not animal.game_no:
             self.ids.lbl_title.size_hint_x += self.ids.tif_game_no.size_hint_x
             self.ids.lay_bar.remove_widget(self.ids.tif_game_no)
@@ -172,11 +174,11 @@ class CutScreen(Screen):
                 elif error == "End of media (die-cut size only)":
                     translation = "Etiketten aufgebraucht! Bitte nachfüllen."
                 self.popup("Fehler", translation)
-            print(status)
+            print("PRINTER:", status)
         except ValueError as e:
             if e.args and "Device not found" in e.args[0]:
                 self.popup("Fehler", "Drucker nicht gefunden!\nIst der Drucker eingeschaltet?")
-            print(e)
+            print("PRINTER:", e)
 
     def popup(self, text, translation):
         button = BeepButton(text="OK", font_size="24sp", size_hint=(0.3, 0.3), padding=(20, 20),
@@ -195,7 +197,9 @@ class CutScreen(Screen):
         TextPosition(self.animal.title, 70, 2.42, 2.7, False).draw(draw)
         TextPosition(cut.title, 56, 2.38, 1.93, False).draw(draw)
         TextPosition("Verpackt: {}".format(date.today().strftime('%d.%m.%Y')), 36, 20, 1.107, False).draw(draw)
-        if self.game_no:
+
+        # This is an ugly hack to remove the placeHolder text
+        if self.game_no and self.game_no != "Wild Nr.":
             TextPosition("ZH Wild Nr.: {}".format(self.game_no), 36, 20, 1.409 if weight else 1.24, False).draw(draw)
 
         if weight:
@@ -216,6 +220,23 @@ class CutScreen(Screen):
 
 
 class ClickableBeepLabel(ButtonBehavior, Label, BeepBehavior):
+    _hint_text = StringProperty('')
+
+    def _set_hint_text(self, value):
+        if isinstance(value, bytes):
+            value = value.decode('utf8')
+        self._hint_text = value
+
+    def _get_hint_text(self):
+        return self._hint_text
+
+    hint_text = AliasProperty(
+        _get_hint_text, _set_hint_text, bind=('_hint_text', ))
+
+    def _get_text(self):
+        t = super._get_text(self)
+        t if t else self._get_hint_text()
+
 
     def __init__(self, **kwargs):
         super(ClickableBeepLabel, self).__init__(**kwargs)
@@ -248,7 +269,7 @@ def set_date_if_necessary(dismiss_popup, new_date):
 
 class ButcherShopLabelPrinterApp(App):
     config = ConfigParser()
-    config.read('butchershoplabelprinter.ini')
+    config.read(os.path.dirname(__file__) + '/butchershoplabelprinter.ini')
 
     sm = ScreenManager(transition=NoTransition())
     animals = []
@@ -259,9 +280,8 @@ class ButcherShopLabelPrinterApp(App):
         ButcherShopLabelPrinterApp.scale = ButcherShopLabelPrinterApp.get_scale(
             ButcherShopLabelPrinterApp.config.get("usage", "active_scale_module"))
 
-    with open('items.json') as json_file:
+    with open(os.path.dirname(__file__) + '/items.json') as json_file:
         items = json.load(json_file)
-        print("Items", items)
         animals.extend([Animal(animal) for animal in items['animals']])
 
     def switch_to_button(self, btn):
@@ -342,7 +362,7 @@ class ButcherShopLabelPrinterApp(App):
 
     def build_config(self, config):
         config.setdefaults('usage', {
-            'active_scale_module': "none",
+            'active_scale_module': "Manuell",
             'active_game_sets': "all;"
         })
         config.setdefaults("printer", {

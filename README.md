@@ -24,6 +24,7 @@ By default the following GPIO are used:
 This printer uses the Raspian OS Lite. The minimal recommended SD card size is 8Gb.
 
 ## Setup
+Create a user named bslp (the group bslp is used in some locations)
 
 ### System packages
 * Install python-dev: `$sudo apt install python-dev`
@@ -59,14 +60,15 @@ This service must be enabled using `$sudo systemctl enable rpi-display-backlight
 
 ### Add udev rule for the printer
 In order to allow any user to use the USB label printer an according udev rule must be added.
-First turn on the printer then connect the USB cable to the Raspberry Pi. When calling `lsusb` a line like `Bus XXX Device YYY: ID ... Brother Industries, Ltd` will appear. To get the VendorId required for the udev rule, the following command is executed: `udevadm info -a -p $(udevadm info -q pat /dev/bus/usb/XXX/YYY)`. In the output one looks for a device that has a line line `ATTR{product}="QL-800"`, or whatever the name of the used printer. From the same block, the value of `ATTR{idVendor}`, in my case `04f9`, is written down.
-To add an udev rule just append the line `SUBSYSTEM=="usb", ATTR={idVendor}=="04f9", MODE="0666"` to `/etc/udev/rules.d/99-com.rules`
+First turn on the printer then connect the USB cable to the Raspberry Pi. When calling `lsusb` a line like `Bus XXX Device YYY: ID AAAA:BBBB Brother Industries, Ltd` will appear. To add an udev rule just append the line `SUBSYSTEM=="usb", ATTRS{idVendor}=="AAAA", ATTRS{idProduct}=="BBBB", GROUP="bslp", MODE="0666"` to `/etc/udev/rules.d/99-com.rules`. For Brother devices this vendor ID should be `04f9`.
+
+`$echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="209b", GROUP="bslp", MODE="0666"' | sudo tee -a /etc/udev/rules.d/99.com.rules`
 
 ### Setup RasClock
 First the two interfacing methods SPI and I2C must be activated in the raspi-config. Then follow the instructions in [the instructions](https://afterthoughtsoftware.com/products/rasclock).
 
 ### Enable auto-login on tty1
-To login automatically after boot, the original `/etc/systemd/system/getty.target.wants/getty@tty1.service` must be moved to `/etc/systemd/system/getty.target.wants/getty@tty2.service`. Then the file `/etc/systemd/system/autologin@.service` must be symlinked to `/etc/systemd/system/getty.target.wants/getty@tty1.service`. Next, the username in the `autologin@.service` file must be changed from `pi` to `sysop`. After a reboot the user sysop should be logged in automatically.
+Open the raspi config `$ sudo raspi-config` -> System -> S5 Boot / Auto Login -> B2 Console Autologin.
 
 ### Kivy config
 Those changes might need to be done in the kivy config file (`/home/sysop/.kivy/config.ini`)
