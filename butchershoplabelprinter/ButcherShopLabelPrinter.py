@@ -34,7 +34,8 @@ from butchershoplabelprinter.ManualScale import ManualScale
 from RPi import GPIO
 
 GPIO.setmode(GPIO.BCM)
-POWER_PIN = 16
+SCALE_POWER_PIN = 5
+PRINTER_POWER_PIN = 6
 POWER_DELAY = 0.1
 
 
@@ -320,7 +321,6 @@ class ButcherShopLabelPrinterApp(App):
         popup.open()
 
     def build(self):
-        self.power_on_off_scale()
         self.settings_cls = ExtendedSettings
         animals_screen = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
         if not callable(getattr(self.scale, "tare", None)):
@@ -351,7 +351,7 @@ class ButcherShopLabelPrinterApp(App):
 
     def shutdown(self, ignored):
         print("shutdown")
-        toggle_on_off_scale()
+        toggle_on_off_devices()
         os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
@@ -384,9 +384,6 @@ class ButcherShopLabelPrinterApp(App):
             ButcherShopLabelPrinterApp.scale = ButcherShopLabelPrinterApp.get_scale(value)
             # TODO update Tare button
 
-    def power_on_off_scale(self):
-        toggle_on_off_scale()
-
     @staticmethod
     def get_scale(value):
         if value == "Keins":
@@ -407,18 +404,29 @@ def available_printers():
     print(available_devices)
     return [i["identifier"] for i in available_devices]
 
+def toggle_on_off_devices():
+    toggle_on_off_printer()
+    toggle_on_off_scale()
 
 def toggle_on_off_scale():
     pass
-    GPIO.setup(POWER_PIN, GPIO.OUT)
-    GPIO.output(POWER_PIN, GPIO.HIGH)
+    GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
+    GPIO.output(SCALE_POWER_PIN, GPIO.HIGH)
     time.sleep(POWER_DELAY)
-    GPIO.cleanup(POWER_PIN)
-    #Clock.schedule_once(lambda _: GPIO.cleanup(POWER_PIN), timeout=POWER_DELAY)
+    GPIO.cleanup(SCALE_POWER_PIN)
+    #Clock.schedule_once(lambda _: GPIO.cleanup(SCALE_POWER_PIN), timeout=POWER_DELAY)
+
+def toggle_on_off_printer():
+    pass
+    GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
+    GPIO.output(PRINTER_POWER_PIN, GPIO.HIGH)
+    time.sleep(POWER_DELAY)
+    GPIO.cleanup(PRINTER_POWER_PIN)
+    #Clock.schedule_once(lambda _: GPIO.cleanup(PRINTER_POWER_PIN), timeout=POWER_DELAY)
 
 def start():
     ButcherShopLabelPrinterApp().run()
-    toggle_on_off_scale()
+    toggle_on_off_devices()
     GPIO.cleanup()
 
 if __name__ == '__main__':
