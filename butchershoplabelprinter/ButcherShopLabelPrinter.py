@@ -39,7 +39,7 @@ PRINTER_POWER_PIN = 6
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
 GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
-POWER_DELAY = 0.1
+POWER_DELAY = 0.8
 
 
 class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):

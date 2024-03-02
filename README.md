@@ -71,9 +71,13 @@ First the two interfacing methods SPI and I2C must be activated in the raspi-con
 Open the raspi config `$ sudo raspi-config` -> System -> S5 Boot / Auto Login -> B2 Console Autologin.
 
 ### Kivy config
-Those changes might need to be done in the kivy config file (`/home/sysop/.kivy/config.ini`)
+Those changes might need to be done in the kivy config file (`~/.kivy/config.ini`)
+* Disable cursor: `show_cursor = 0`
 * To deactivate the vitual keyboard complete the line `keyboard_mode = ` with `system`
 * If double keystrokes occur, remove the line `%(name)s = probesysfs,provider=hidinput`.
+
+### Waveshare Displays:
+If the touch functionality is not working it might help to add `dtoverlay=rpi-ft5406` to config.txt.
 
 ### Hardware Modifications
 The label printer and the scale controller can be modified so the ON/OFF buttons can be activated with the relais. 
