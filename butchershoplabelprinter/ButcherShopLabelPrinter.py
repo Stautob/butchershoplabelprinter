@@ -36,6 +36,8 @@ from RPi import GPIO
 GPIO.setmode(GPIO.BCM)
 SCALE_POWER_PIN = 5
 PRINTER_POWER_PIN = 6
+GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
+GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
 POWER_DELAY = 0.1
 
 
@@ -321,6 +323,7 @@ class ButcherShopLabelPrinterApp(App):
         popup.open()
 
     def build(self):
+        toggle_on_off_devices()
         self.settings_cls = ExtendedSettings
         animals_screen = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
         if not callable(getattr(self.scale, "tare", None)):
@@ -409,16 +412,12 @@ def toggle_on_off_devices():
     toggle_on_off_scale()
 
 def toggle_on_off_scale():
-    pass
-    GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
     GPIO.output(SCALE_POWER_PIN, GPIO.HIGH)
     time.sleep(POWER_DELAY)
     GPIO.cleanup(SCALE_POWER_PIN)
     #Clock.schedule_once(lambda _: GPIO.cleanup(SCALE_POWER_PIN), timeout=POWER_DELAY)
 
 def toggle_on_off_printer():
-    pass
-    GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
     GPIO.output(PRINTER_POWER_PIN, GPIO.HIGH)
     time.sleep(POWER_DELAY)
     GPIO.cleanup(PRINTER_POWER_PIN)
