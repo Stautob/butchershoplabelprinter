@@ -33,9 +33,10 @@ from butchershoplabelprinter.KernScale import KernScale
 from butchershoplabelprinter.ManualScale import ManualScale
 from RPi import GPIO
 
-GPIO.setmode(GPIO.BCM)
 SCALE_POWER_PIN = 5
 PRINTER_POWER_PIN = 6
+
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
 GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
 POWER_DELAY = 0.1
@@ -355,6 +356,7 @@ class ButcherShopLabelPrinterApp(App):
     def shutdown(self, ignored):
         print("shutdown")
         toggle_on_off_devices()
+        GPIO.cleanup()
         os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
@@ -408,25 +410,16 @@ def available_printers():
     return [i["identifier"] for i in available_devices]
 
 def toggle_on_off_devices():
-    toggle_on_off_printer()
-    toggle_on_off_scale()
-
-def toggle_on_off_scale():
     GPIO.output(SCALE_POWER_PIN, GPIO.HIGH)
-    time.sleep(POWER_DELAY)
-    GPIO.cleanup(SCALE_POWER_PIN)
-    #Clock.schedule_once(lambda _: GPIO.cleanup(SCALE_POWER_PIN), timeout=POWER_DELAY)
-
-def toggle_on_off_printer():
     GPIO.output(PRINTER_POWER_PIN, GPIO.HIGH)
     time.sleep(POWER_DELAY)
-    GPIO.cleanup(PRINTER_POWER_PIN)
-    #Clock.schedule_once(lambda _: GPIO.cleanup(PRINTER_POWER_PIN), timeout=POWER_DELAY)
+    GPIO.output(SCALE_POWER_PIN, GPIO.LOW)
+    GPIO.output(PRINTER_POWER_PIN, GPIO.LOW)
+
 
 def start():
     ButcherShopLabelPrinterApp().run()
     toggle_on_off_devices()
-    GPIO.cleanup()
 
 if __name__ == '__main__':
     start()
