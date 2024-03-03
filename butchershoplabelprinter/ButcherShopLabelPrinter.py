@@ -117,10 +117,10 @@ class TextPosition:
     def draw(self, draw: ImageDraw, bold: bool = False):
         if self.align_right:
             _, _, w, h = draw.textbbox((0, 0), text=self.text, font=self.font)
-            draw.text((TextPosition.W / self.x_part - w, TextPosition.H / self.y_part), self.text, stroke_width=2 if bold else 1, fill="black",
+            draw.text((TextPosition.W / self.x_part - w, TextPosition.H / self.y_part), self.text, stroke_width=1 if bold else 0, fill="black",
                       font=self.font)
         else:
-            draw.text((TextPosition.W / self.x_part, TextPosition.H / self.y_part), self.text, fill="black",
+            draw.text((TextPosition.W / self.x_part, TextPosition.H / self.y_part), self.text, stroke_width=1 if bold else 0, fill="black",
                       font=self.font)
 
 
@@ -211,8 +211,7 @@ class CutScreen(Screen):
 
         if weight:
             TextPosition("Gewicht: {}g".format(weight), 36, 20, 1.409 if has_game_no else 1.24, False).draw(draw)
-            TextPosition("Preis: CHF {:.2f}".format(cut.price_per_kg * (weight / 1000)), 36, 1.086, 1.24, True).draw(
-                draw)
+            TextPosition("Preis: CHF {:.2f}".format(cut.price_per_kg * (weight / 1000)), 36, 1.086, 1.24, True).draw(draw)
             TextPosition("(CHF {:.2f}/kg)".format(cut.price_per_kg), 36, 1.086, 1.107, True).draw(draw)
 
         animal_icon = Image.open(self.animal.image_source)
