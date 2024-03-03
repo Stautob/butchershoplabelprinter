@@ -39,7 +39,7 @@ PRINTER_POWER_PIN = 6
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
 GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
-POWER_DELAY = 0.8
+POWER_DELAY = 0.9
 
 
 class AnimalButton(BeepBehavior, ButtonBehavior, BoxLayout):
@@ -114,10 +114,10 @@ class TextPosition:
         self.y_part = y_part
         self.align_right = align_right
 
-    def draw(self, draw: ImageDraw):
+    def draw(self, draw: ImageDraw, bold: bool = False):
         if self.align_right:
             _, _, w, h = draw.textbbox((0, 0), text=self.text, font=self.font)
-            draw.text((TextPosition.W / self.x_part - w, TextPosition.H / self.y_part), self.text, fill="black",
+            draw.text((TextPosition.W / self.x_part - w, TextPosition.H / self.y_part), self.text, stroke_width=2 if bold else 1, fill="black",
                       font=self.font)
         else:
             draw.text((TextPosition.W / self.x_part, TextPosition.H / self.y_part), self.text, fill="black",
@@ -200,14 +200,17 @@ class CutScreen(Screen):
         draw = ImageDraw.Draw(img)
         TextPosition(self.animal.title, 70, 2.42, 2.7, False).draw(draw)
         TextPosition(cut.title, 56, 2.38, 1.93, False).draw(draw)
-        TextPosition("Verpackt: {}".format(date.today().strftime('%d.%m.%Y')), 36, 20, 1.107, False).draw(draw)
-
+        
         # This is an ugly hack to remove the placeHolder text
-        if self.game_no and self.game_no != "Wild Nr.":
-            TextPosition("ZH Wild Nr.: {}".format(self.game_no), 36, 20, 1.409 if weight else 1.24, False).draw(draw)
+        has_game_no = self.game_no and self.game_no != "Wild Nr."
+
+        TextPosition("Verpackt am: {}".format(date.today().strftime('%d.%m.%Y')), 36, 20, 1.24 if has_game_no else 1.107, False).draw(draw, True)
+
+        if has_game_no:
+            TextPosition("ZH Wild Nr.: {}".format(self.game_no), 36, 20, 1.107, False).draw(draw)
 
         if weight:
-            TextPosition("Gewicht: {}g".format(weight), 36, 20, 1.24, False).draw(draw)
+            TextPosition("Gewicht: {}g".format(weight), 36, 20, 1.409 if has_game_no else 1.24, False).draw(draw)
             TextPosition("Preis: CHF {:.2f}".format(cut.price_per_kg * (weight / 1000)), 36, 1.086, 1.24, True).draw(
                 draw)
             TextPosition("(CHF {:.2f}/kg)".format(cut.price_per_kg), 36, 1.086, 1.107, True).draw(draw)

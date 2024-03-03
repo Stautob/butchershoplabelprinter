@@ -71,12 +71,16 @@
           "pricePerKg": 65.00
         },
         {
-          "title": "Luder",
+          "title": "Spareribs",
+          "pricePerKg": 25.00
+        },
+        {
+          "title": "Trichinenprobe",
           "pricePerKg": 0.00
         },
         {
-          "title": "Spareribs",
-          "pricePerKg": 25.00
+          "title": "Luder",
+          "pricePerKg": 0.00
         }
       ]
     },
@@ -84,7 +88,7 @@
       "title": "Fuchs",
       "gameNo": false,
       "sets": [
-        "Dominik's Kategorie"
+        "Delikatessen"
       ],
       "icon_source": "resources/images/ic_fox.png",
       "cuts": [
@@ -98,7 +102,7 @@
       "title": "Dachs",
       "gameNo": false,
       "sets": [
-        "Dominik's Kategorie"
+        "Delikatessen"
       ],
       "icon_source": "resources/images/ic_badger.png",
       "cuts": [
