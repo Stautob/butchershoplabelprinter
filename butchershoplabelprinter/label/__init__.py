@@ -1,0 +1,4 @@
+from butchershoplabelprinter.label.PrinterLabel import PrinterLabel
+from butchershoplabelprinter.utility.imports import import_subclasses_in_this_dir
+
+import_subclasses_in_this_dir(PrinterLabel)

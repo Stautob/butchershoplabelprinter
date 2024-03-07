@@ -10,8 +10,7 @@ from kivy.uix.settings import SettingOptions, SettingSpacer, SettingItem
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.widget import Widget
 
-from butchershoplabelprinter import ButcherShopLabelPrinter
-
+# TODO split key and display value for options
 
 class SettingDynamicOptions(SettingOptions):
     '''Implementation of an option list that creates the items in the possible

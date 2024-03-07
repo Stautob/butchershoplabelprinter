@@ -1,13 +1,13 @@
 [
   {
-    "type": "options",
+    "type": "title",
+    "title": "Diverses"
+  },
+  {
+    "type": "dynamic_options",
     "title": "Waage",
     "desc": "Aktives Wiegemodul",
-    "options": [
-      "Keins",
-      "Manuell",
-      "Kern"
-    ],
+    "function_string": "butchershoplabelprinter:scale.Scale.available_scales",
     "section": "usage",
     "key": "active_scale_module"
   },
@@ -24,33 +24,20 @@
     "title": "Drucker"
   },
   {
-    "type": "options",
-    "title": "Printer Model",
-    "desc": "Used printer model",
-    "options": [
-      "QL-800"
-    ],
+    "type": "dynamic_options",
+    "title": "Drucker",
+    "desc": "Aktives Drucker Modul",
+    "function_string": "butchershoplabelprinter:printer.Printer.available_printers",
     "section": "printer",
-    "key": "printer_model"
+    "key": "active_printer"
   },
   {
     "type": "dynamic_options",
-    "title": "Printer ID",
-    "desc": "Used printer",
-    "function_string": "butchershoplabelprinter:PrinterUtil.available_printers",
+    "title": "Active Label",
+    "desc": "Used label layout",
+    "function_string": "butchershoplabelprinter:label.PrinterLabel.available_labels",
     "section": "printer",
-    "key": "printer_id"
-  },
-  {
-    "type": "options",
-    "title": "Labels",
-    "desc": "Used label size",
-    "options": [
-      "62x100",
-      "62"
-    ],
-    "section": "printer",
-    "key": "printer_label_size"
+    "key": "active_label"
   },
   {
     "type": "bool",

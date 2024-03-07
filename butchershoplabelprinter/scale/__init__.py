@@ -1,0 +1,4 @@
+from butchershoplabelprinter.scale.Scale import Scale
+from butchershoplabelprinter.utility.imports import import_subclasses_in_this_dir
+
+import_subclasses_in_this_dir(Scale)
