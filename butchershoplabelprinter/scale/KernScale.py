@@ -42,7 +42,10 @@ class KernScale(Scale):
                 print(f"WARNING: Kern scale unit is not set to g! Unit is: {unit}")
                 callback(0.0)
             if error != b"error":
-                callback(float(value))
+                try:
+                    callback(float(value))
+                except:
+                    print(f"Kern Scale Error: Unit:{unit}, ERROR:{error}, Value:{value}")
             else:
                 raise Exception("Kern Scale Error")
 
