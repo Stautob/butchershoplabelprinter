@@ -41,13 +41,14 @@ class KernScale(Scale):
             if unit != b"g":
                 print(f"WARNING: Kern scale unit is not set to g! Unit is: {unit}")
                 callback(0.0)
-            if error != b"error":
+            elif error == b"error":
+                raise Exception("Kern Scale Error")
+            else:
                 try:
                     callback(float(value))
                 except:
                     print(f"Kern Scale Error: Unit:{unit}, ERROR:{error}, Value:{value}")
-            else:
-                raise Exception("Kern Scale Error")
+                    callback(0.0)
 
     def tare(self):
         with serial.Serial('/dev/ttyUSB0', 9600, timeout=1) as ser:
