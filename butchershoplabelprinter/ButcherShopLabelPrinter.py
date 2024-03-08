@@ -3,6 +3,7 @@ from math import ceil
 import time
 
 import os
+from typing import List
 # os.environ["KIVY_NO_CONSOLELOG"] = "1"
 
 from kivy.app import App
@@ -27,17 +28,22 @@ from butchershoplabelprinter.BeepBehavior import BeepBehavior
 from butchershoplabelprinter.settings.ExtendedSettings import ExtendedSettings
 from butchershoplabelprinter.label.PrinterLabel import PrinterLabel
 from butchershoplabelprinter.scale.ManualScale import ManualScale
-# from RPi import GPIO
+
 from butchershoplabelprinter.scale.Scale import Scale
 
 from butchershoplabelprinter.ui.TimePicker import TimePicker
 
+from butchershoplabelprinter.app_config import *
+
+if not DEBUG_MODE:
+    from RPi import GPIO
+
 SCALE_POWER_PIN = 5
 PRINTER_POWER_PIN = 6
-
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
-# GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
+if not DEBUG_MODE:
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(SCALE_POWER_PIN, GPIO.OUT)
+    GPIO.setup(PRINTER_POWER_PIN, GPIO.OUT)
 POWER_DELAY = 0.9
 
 
@@ -234,7 +240,8 @@ class ButcherShopLabelPrinterApp(App):
     def shutdown(self, ignored):
         print("shutdown")
         toggle_on_off_devices()
-        # GPIO.cleanup()
+        if not DEBUG_MODE:
+            GPIO.cleanup()
         os.system('systemctl poweroff')
 
     def get_active_game_sets(self):
@@ -279,11 +286,12 @@ def available_game_sets():
 
 
 def toggle_on_off_devices():
-    # GPIO.output(SCALE_POWER_PIN, GPIO.HIGH)
-    # GPIO.output(PRINTER_POWER_PIN, GPIO.HIGH)
-    time.sleep(POWER_DELAY)
-    # GPIO.output(SCALE_POWER_PIN, GPIO.LOW)
-    # GPIO.output(PRINTER_POWER_PIN, GPIO.LOW)
+    if not DEBUG_MODE:
+        GPIO.output(SCALE_POWER_PIN, GPIO.HIGH)
+        GPIO.output(PRINTER_POWER_PIN, GPIO.HIGH)
+        time.sleep(POWER_DELAY)
+        GPIO.output(SCALE_POWER_PIN, GPIO.LOW)
+        GPIO.output(PRINTER_POWER_PIN, GPIO.LOW)
 
 
 def start():
