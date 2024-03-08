@@ -5,6 +5,7 @@ class Scale():
     id : Tuple[str,str] = (None, None)
 
     def measure(self, callback: Callable[[float], None] ) -> None :
+        """ Execute the measure action and invoke the callback with the resulting weight in gramms """
         pass
 
     @staticmethod
