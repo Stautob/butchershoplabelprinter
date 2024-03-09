@@ -9,9 +9,12 @@ from brother_ql.backends.pyusb import BrotherQLBackendPyUSB
 from butchershoplabelprinter.label.PrinterLabel import PrinterLabel
 from butchershoplabelprinter.printer.Printer import Printer
 
+
 class BrotherPrinter(Printer):
 
     id: Tuple[str, str] = ("brother", "Brother Printer")
+
+    model = "QL-800" 
 
     # TODO convert from using argument parser calls to api calls
     def print_label(self, label: PrinterLabel) -> Tuple[int, str]:
@@ -36,13 +39,14 @@ class BrotherPrinter(Printer):
 
     def __init__(self):
         self.config = App.get_running_app().config
-        available_printers = BrotherPrinter.available_printers()
+        available_printers = BrotherPrinter.available_printers()      
+        self.do_cut = self.config.getboolean("printer", "printer_cut")
         if not available_printers:
             raise Exception("No compatible printer found.")
         
         self.printer_id = available_printers[0]
-        self.do_cut = self.config.getboolean("printer", "printer_cut")
-        qlr = BrotherQLRaster(self.config.get("f", "printer_model"))
+  
+        qlr = BrotherQLRaster(BrotherPrinter.model)
         qlr.exception_on_warning = True
 
         # self.printer = BrotherQLBackendPyUSB(self.printer_id)
