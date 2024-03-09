@@ -11,7 +11,7 @@ from kivy.clock import Clock
 from kivy.config import ConfigParser
 from kivy.factory import Factory
 from kivy.factory import Factory
-from kivy.properties import ListProperty, StringProperty
+from kivy.properties import ListProperty, StringProperty, ObjectProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -97,20 +97,26 @@ class CutScreen(Screen):
         self.ids.lbl_title.text = animal.title
         self.ids.img_title.source = animal.image_source
 
-        if not animal.game_no:
-            self.ids.lbl_title.size_hint_x += self.ids.tif_game_no.size_hint_x
-            self.ids.lay_bar.remove_widget(self.ids.tif_game_no)
-        if not callable(getattr(App.get_running_app().scale, "tare", None)):
-            self.ids.lbl_title.size_hint_x += self.ids.btn_tare.size_hint_x
-            self.ids.lay_bar.remove_widget(self.ids.btn_tare)
-            self.ids.lbl_title.size_hint_x += self.ids.btn_weight.size_hint_x
-            self.ids.lay_bar.remove_widget(self.ids.btn_weight)
+        ButcherShopLabelPrinterApp.bind(on_active_scale=lambda _, s: print("New Scale: ", s))
+
+        self.show_or_hide_scale_buttons(animal, App.get_running_app().scale)
         grid_cuts = self.ids.grid_cuts
         grid_cuts.rows = ceil(len(animal.cuts) / grid_cuts.cols)
         for cut in animal.cuts:
             button = Factory.BigButton(text=cut.title, size_hint=(0.333, 0.488))
             button.bind(on_press=lambda _, cut=cut: self.print_label(cut))
             grid_cuts.add_widget(button)
+
+    def show_or_hide_buttons(self, animal: Animal, scale: Scale):
+        if not animal.game_no:
+            self.ids.lbl_title.size_hint_x += self.ids.tif_game_no.size_hint_x
+            self.ids.lay_bar.remove_widget(self.ids.tif_game_no)
+        if scale.tarable:
+            self.ids.lbl_title.size_hint_x += self.ids.btn_tare.size_hint_x
+            self.ids.lay_bar.remove_widget(self.ids.btn_tare)
+        if scale.isReal:
+            self.ids.lbl_title.size_hint_x += self.ids.btn_weight.size_hint_x
+            self.ids.lay_bar.remove_widget(self.ids.btn_weight)
 
     def print_label(self, cut: Cut):
         App.get_running_app().scale.measure(lambda weight: self.print_label_with_weight(cut, weight))
@@ -157,6 +163,7 @@ class ButcherShopLabelPrinterApp(App):
     sm = ScreenManager(transition=NoTransition())
     animals: List[Animal] = []
     scale: Scale = None
+    active_scale = ObjectProperty()
     printer_label_class: type[PrinterLabel] = None
     printer_class: type[Printer] = None
 
@@ -234,10 +241,10 @@ class ButcherShopLabelPrinterApp(App):
         popup = Popup(title="Drucker Herunterfahren?", title_align="center", title_size="30sp", content=content,
                       size_hint=(0.7, 0.3))
         btn_cncl.bind(on_release=popup.dismiss)
-        btn_ok.bind(on_release=lambda ignore: Clock.schedule_once(self.shutdown, 0.11))
+        btn_ok.bind(on_release=lambda _: Clock.schedule_once(self.shutdown, 0.11))
         popup.open()
 
-    def shutdown(self, ignored):
+    def shutdown(self, _):
         print("shutdown")
         toggle_on_off_devices()
         if not DEBUG_MODE:
@@ -263,6 +270,7 @@ class ButcherShopLabelPrinterApp(App):
             ButcherShopLabelPrinterApp.printer_class = ButcherShopLabelPrinterApp.get_printer(value)
         elif key == "active_scale_module":
             ButcherShopLabelPrinterApp.scale = ButcherShopLabelPrinterApp.get_scale(value)
+            ButcherShopLabelPrinterApp.active_scale = ButcherShopLabelPrinterApp.get_scale(value)
             # TODO update Tare button
 
     @staticmethod
@@ -292,7 +300,6 @@ def toggle_on_off_devices():
         time.sleep(POWER_DELAY)
         GPIO.output(SCALE_POWER_PIN, GPIO.LOW)
         GPIO.output(PRINTER_POWER_PIN, GPIO.LOW)
-
 
 def start():
     ButcherShopLabelPrinterApp().run()

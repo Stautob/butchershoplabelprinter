@@ -24,6 +24,10 @@ from butchershoplabelprinter.scale.Scale import Scale
 class KernScale(Scale):
 
     id : Tuple[str,str] = ("kern", "Kern")
+    
+    isReal: bool = True
+
+    isTareable: bool = True
 
     MSG_LENGTH = 18
     ERROR_SLICE = slice(12, 16)
@@ -31,7 +35,7 @@ class KernScale(Scale):
     VALUE_SLICE = slice(1, 12)
 
     def measure(self, callback: Callable[[float], None]) -> None:
-        with serial.Serial('/dev/ttyUSB0', 9600, timeout=1) as ser:
+        with serial.Serial('/dev/ttyUSB0', 9600) as ser:
             ser.write(b'w')
             ser.flush()
             s = ser.read(KernScale.MSG_LENGTH)

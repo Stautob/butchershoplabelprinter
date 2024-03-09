@@ -21,6 +21,10 @@ class ScalePopup(Popup):
 class ManualScale(Scale):
 
     id : Tuple[str,str] = ("manual", "Manuell")
+    
+    isReal: bool = False
+
+    isTareable: bool = False
 
     def measure(self, callback: Callable[[float], None]) -> None:
         Factory.ScalePopup(callback).open()
