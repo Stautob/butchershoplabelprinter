@@ -77,7 +77,10 @@ class AnimalsScreen(Screen):
 
     def __init__(self, animals):
         super().__init__(name=AnimalsScreen.title)
+        # TODO figure out how to detect if screen is loaded
+        # App.get_running_app().bind(active_scale=lambda _, value: self.show_or_hide_buttons(value))
         self.update_animals(animals)
+        self.show_or_hide_buttons(App.get_running_app().active_scale)
 
     def update_animals(self, animals):
         grid_animals = self.ids.grid_animals
@@ -88,6 +91,18 @@ class AnimalsScreen(Screen):
             button.bind(on_release=App.get_running_app().switch_to_button)
             grid_animals.add_widget(button)
 
+    def show_or_hide_buttons(self, scale: Scale):
+        if not scale.isTareable:
+            if self.ids.lbl_title and self.ids.btn_tare:
+                self.ids.lbl_title.size_hint_x += self.ids.btn_tare.size_hint_x
+            if self.ids.bl_title_bar:
+                self.ids.bl_title_bar.remove_widget(self.ids.btn_tare)
+        if not scale.isReal:
+            if self.ids.lbl_title and self.ids.btn_weight:
+                self.ids.lbl_title.size_hint_x += self.ids.btn_weight.size_hint_x
+            if self.ids.bl_title_bar:
+                self.ids.bl_title_bar.remove_widget(self.ids.btn_weight)
+
 
 class CutScreen(Screen):
 
@@ -97,9 +112,10 @@ class CutScreen(Screen):
         self.ids.lbl_title.text = animal.title
         self.ids.img_title.source = animal.image_source
 
-        ButcherShopLabelPrinterApp.bind(on_active_scale=lambda _, s: print("New Scale: ", s))
+        # TODO figure out how to detect if screen is loaded
+        # App.get_running_app().bind(active_scale=lambda _, value, animal=animal: self.show_or_hide_buttons(animal, value))
 
-        self.show_or_hide_scale_buttons(animal, App.get_running_app().scale)
+        self.show_or_hide_buttons(animal, App.get_running_app().active_scale)
         grid_cuts = self.ids.grid_cuts
         grid_cuts.rows = ceil(len(animal.cuts) / grid_cuts.cols)
         for cut in animal.cuts:
@@ -111,15 +127,15 @@ class CutScreen(Screen):
         if not animal.game_no:
             self.ids.lbl_title.size_hint_x += self.ids.tif_game_no.size_hint_x
             self.ids.lay_bar.remove_widget(self.ids.tif_game_no)
-        if scale.tarable:
+        if not scale.isTareable:
             self.ids.lbl_title.size_hint_x += self.ids.btn_tare.size_hint_x
             self.ids.lay_bar.remove_widget(self.ids.btn_tare)
-        if scale.isReal:
+        if not scale.isReal:
             self.ids.lbl_title.size_hint_x += self.ids.btn_weight.size_hint_x
             self.ids.lay_bar.remove_widget(self.ids.btn_weight)
 
     def print_label(self, cut: Cut):
-        App.get_running_app().scale.measure(lambda weight: self.print_label_with_weight(cut, weight))
+        App.get_running_app().active_scale.measure(lambda weight: self.print_label_with_weight(cut, weight))
 
     def print_label_with_weight(self, cut: Cut, weight_in_g: float):
         app =  App.get_running_app()
@@ -162,8 +178,7 @@ class ButcherShopLabelPrinterApp(App):
 
     sm = ScreenManager(transition=NoTransition())
     animals: List[Animal] = []
-    scale: Scale = None
-    active_scale = ObjectProperty()
+    active_scale: ObjectProperty = ObjectProperty()
     printer_label_class: type[PrinterLabel] = None
     printer_class: type[Printer] = None
 
@@ -173,9 +188,9 @@ class ButcherShopLabelPrinterApp(App):
 
     def __init__(self):
         super().__init__()
-        ButcherShopLabelPrinterApp.scale = ButcherShopLabelPrinterApp.get_scale(ButcherShopLabelPrinterApp.config.get("usage", "active_scale_module"))
-        ButcherShopLabelPrinterApp.printer_label_class = ButcherShopLabelPrinterApp.get_label(ButcherShopLabelPrinterApp.config.get("printer", "active_label"))
-        ButcherShopLabelPrinterApp.printer_class = ButcherShopLabelPrinterApp.get_printer(ButcherShopLabelPrinterApp.config.get("printer", "active_printer"))
+        self.active_scale = self.get_scale(ButcherShopLabelPrinterApp.config.get("usage", "active_scale_module"))
+        ButcherShopLabelPrinterApp.printer_label_class = self.get_label(ButcherShopLabelPrinterApp.config.get("printer", "active_label"))
+        ButcherShopLabelPrinterApp.printer_class = self.get_printer(ButcherShopLabelPrinterApp.config.get("printer", "active_printer"))
 
     def switch_to_button(self, btn):
         self.sm.current = btn.text
@@ -187,7 +202,7 @@ class ButcherShopLabelPrinterApp(App):
         self.printer.cut()
 
     def tare(self):
-        self.scale.tare()
+        self.active_scale.tare()
 
     def set_date_popup(self):
         btn_ok = BeepButton(text="OK", font_size="24sp")
@@ -202,7 +217,7 @@ class ButcherShopLabelPrinterApp(App):
         popup.open()
 
     def measure_popup(self):
-        self.scale.measure(self.open_measure_popup)
+        self.active_scale.measure(self.open_measure_popup)
 
     def open_measure_popup(self, weight):
         btn_ok = BeepButton(text="OK", font_size="24sp")
@@ -218,12 +233,7 @@ class ButcherShopLabelPrinterApp(App):
         toggle_on_off_devices()
         self.settings_cls = ExtendedSettings
         animals_screen = AnimalsScreen(self.get_active_animals(self.get_active_game_sets()))
-        if not callable(getattr(self.scale, "tare", None)):
-            as_ids = animals_screen.ids
-            as_ids.lbl_title.size_hint_x += as_ids.btn_tare.size_hint_x
-            as_ids.bl_title_bar.remove_widget(as_ids.btn_tare)
-            as_ids.lbl_title.size_hint_x += as_ids.btn_weight.size_hint_x
-            as_ids.bl_title_bar.remove_widget(as_ids.btn_weight)
+
 
         self.main_widget = animals_screen
         self.sm.add_widget(self.main_widget)
@@ -231,6 +241,17 @@ class ButcherShopLabelPrinterApp(App):
         for animal in ButcherShopLabelPrinterApp.animals:
             self.sm.add_widget(CutScreen(animal))
         return self.sm
+    
+    def build_config(self, config):
+        config.setdefaults('usage', {
+            'active_scale_module': 'manual',
+            'active_game_sets': 'Schalenwild 1;Schwarzwild'
+        })
+        config.setdefaults('printer', {
+            'active_label': 'ltc',
+            'active_printer': 'debug',
+            'printer_cut': '1',
+        })
 
     def try_shutdown(self):
         btn_ok = BeepButton(text="OK", font_size="24sp")
@@ -265,13 +286,11 @@ class ButcherShopLabelPrinterApp(App):
         if key == "active_game_sets":
             self.main_widget.update_animals(self.get_active_animals(value.split(';')))
         elif key == "active_label":
-            ButcherShopLabelPrinterApp.printer_label_class = ButcherShopLabelPrinterApp.get_label(value)
+            ButcherShopLabelPrinterApp.printer_label_class = self.get_label(value)
         elif key == "active_printer":
-            ButcherShopLabelPrinterApp.printer_class = ButcherShopLabelPrinterApp.get_printer(value)
+            ButcherShopLabelPrinterApp.printer_class = self.get_printer(value)
         elif key == "active_scale_module":
-            ButcherShopLabelPrinterApp.scale = ButcherShopLabelPrinterApp.get_scale(value)
-            ButcherShopLabelPrinterApp.active_scale = ButcherShopLabelPrinterApp.get_scale(value)
-            # TODO update Tare button
+            self.active_scale = self.get_scale(value)
 
     @staticmethod
     def get_scale(key: str) -> Scale:

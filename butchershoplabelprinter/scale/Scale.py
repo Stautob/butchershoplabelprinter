@@ -17,4 +17,4 @@ class Scale():
         return [s.id[0] for s in Scale.__subclasses__()]
     
     def __repr__(self):
-        return f"Scale {id[1]}"
+        return f"Scale {self.id[1]}"
