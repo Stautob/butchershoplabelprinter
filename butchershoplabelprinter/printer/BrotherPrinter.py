@@ -46,8 +46,8 @@ class BrotherPrinter(Printer):
         
         self.printer_id = available_printers[0]
   
-        qlr = BrotherQLRaster(BrotherPrinter.model)
-        qlr.exception_on_warning = True
+        self.qlr = BrotherQLRaster(BrotherPrinter.model)
+        self.qlr.exception_on_warning = True
 
         # self.printer = BrotherQLBackendPyUSB(self.printer_id)
 
